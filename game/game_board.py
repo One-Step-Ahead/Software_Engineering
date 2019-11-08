@@ -1,3 +1,4 @@
+from game.cards import *
 from game.player import *
 
 
