@@ -10,12 +10,13 @@ class Player:
         self.hand = []
         self.stich_score = int
 
-    def draw_card(self, card_deck: list):
-        selected_card = choice(card_deck)
-        self.hand.append(selected_card)
-        card_deck.remove(selected_card)
+    def draw_card(self, card_deck: list, amount=1):
+        for i in range(0, amount):
+            selected_card = choice(card_deck)
+            self.hand.append(selected_card)
+            card_deck.remove(selected_card)
 
-    def play_card(self, ):
+    def play_card(self):
         pass
 
 

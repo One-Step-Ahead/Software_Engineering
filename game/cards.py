@@ -22,13 +22,12 @@ class SpecialCard(Card):
         print('[', self.cardType, sep='', end=']')
 
 
-def create_all_cards():
-    card_deck = create13_colored_cards("red")
+def create_all_cards(card_deck: list):
+    card_deck += create13_colored_cards("red")
     card_deck += create13_colored_cards("blue")
     card_deck += create13_colored_cards("green")
     card_deck += create13_colored_cards("yellow")
     card_deck += create_special_cards()
-
 
     return card_deck
 

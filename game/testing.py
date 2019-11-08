@@ -12,9 +12,11 @@ def test_print_cards(card_deck: list):
 
 
 def test_print_players_cards(players: list):
+    print('*******************')
     for i in players:
         check_player_hand_cards(i)
         print()
+    print('*******************\n')
 
 
 def test_number_of_players(players: list):
@@ -22,15 +24,15 @@ def test_number_of_players(players: list):
 
 
 def check_player_hand_cards(player: Player):
-    print('This is the Hand of Player', player.id)
+    print('Player:', player.id, 'Number of cards in hand:', len(player.hand))
     for i in player.hand:
         i.print_card()
 
 
 def test(g: GameBoard):
     test_number_of_players(g.players)
-    test_print_cards(g.card_deck)
     test_print_players_cards(g.players)
 
-    g.players[0].draw_card(g.card_deck)
-    test_print_players_cards(g.players)
+    for i in range(0, 5):
+        g.new_round()
+        test_print_players_cards(g.players)
