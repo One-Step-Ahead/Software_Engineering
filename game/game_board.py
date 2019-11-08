@@ -1,3 +1,6 @@
+from game.player import *
+
+
 class GameBoardMeta(type):
     _instance = None
 
@@ -8,4 +11,9 @@ class GameBoardMeta(type):
 
 
 class GameBoard(metaclass=GameBoardMeta):
-    pass
+
+    def __init__(self):
+        self.card_deck = create_all_cards()
+        self.players = create_players()
+        self.played_cards = list()
+        self.round_counter = int

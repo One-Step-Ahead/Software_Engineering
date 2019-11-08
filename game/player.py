@@ -1,4 +1,3 @@
-from game.cards import *
 from random import choice
 
 
@@ -7,8 +6,9 @@ class Player:
 
     def __init__(self, player_number):
         self.id = player_number
-        self.score = int(0)
+        self.score = 0
         self.hand = []
+        self.stich_score = int
 
     def draw_card(self, card_deck: list):
         selected_card = choice(card_deck)

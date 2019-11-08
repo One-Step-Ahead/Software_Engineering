@@ -8,11 +8,18 @@ class ColoredCard(Card):
         self.cardColor = card_color
         self.cardNumber = card_number
 
+    def print_card(self):
+        print('[', self.cardColor, sep='', end='|')
+        print(self.cardNumber, end=']')
+
 
 class SpecialCard(Card):
 
     def __init__(self, card_type):
         self.cardType = card_type
+
+    def print_card(self):
+        print('[', self.cardType, sep='', end=']')
 
 
 def create_all_cards():
