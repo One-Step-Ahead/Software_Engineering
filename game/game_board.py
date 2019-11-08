@@ -28,6 +28,9 @@ class GameBoard(metaclass=GameBoardMeta):
         self.set_new_atut()
         print('New Round! [', self.round, ']', sep='')
 
+    def new_stich(self):
+        self.cards_in_play.clear()
+
     def prepare_players(self):
         for i in self.players:
             i.hand.clear()
