@@ -1,5 +1,6 @@
 class Card:
-    pass
+    def print_card(self):
+        pass
 
 
 class ColoredCard(Card):

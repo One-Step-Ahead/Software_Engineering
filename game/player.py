@@ -1,8 +1,9 @@
 from random import choice
 
+from game.cards import SpecialCard
+
 
 class Player:
-    total_player_number = 4
 
     def __init__(self, player_number):
         self.id = player_number
@@ -19,9 +20,9 @@ class Player:
     def play_card(self):
         pass
 
-
-def create_players():
-    players = []
-    for i in range(0, Player.total_player_number):
-        players.append(Player(i))
-    return players
+    def get_number_of_special_cards(self):
+        cards = 0
+        for i in self.hand:
+            if isinstance(i, SpecialCard):
+                cards += 1
+        return cards

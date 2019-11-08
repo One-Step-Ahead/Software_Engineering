@@ -2,6 +2,15 @@ from game.game_board import GameBoard
 from game.player import *
 
 
+def test(g: GameBoard):
+    test_number_of_players(g.players)
+
+    for i in range(0, g.rounds_total):
+        g.new_round()
+        print_atut(g)
+        test_print_players_cards(g.players)
+
+
 def test_print_cards(card_deck: list):
     print('Total number of Cards in Deck:', len(card_deck))
     print('{ ', end='')
@@ -29,10 +38,10 @@ def check_player_hand_cards(player: Player):
         i.print_card()
 
 
-def test(g: GameBoard):
-    test_number_of_players(g.players)
-    test_print_players_cards(g.players)
-
-    for i in range(0, 5):
-        g.new_round()
-        test_print_players_cards(g.players)
+def print_atut(g):
+    if g.round != g.rounds_total:
+        print("Atut this round: ", end='')
+        g.atut.print_card()
+        print()
+    else:
+        print("Atut this round: None")

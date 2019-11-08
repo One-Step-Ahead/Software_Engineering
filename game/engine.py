@@ -3,7 +3,8 @@ from game.testing import test
 
 
 def init():
-    g = GameBoard()
+    player_count = 4
+    g = GameBoard(player_count)
     test(g)
 
 
