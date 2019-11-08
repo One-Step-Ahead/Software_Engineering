@@ -28,7 +28,7 @@ def create_all_cards():
 
 def create13_colored_cards(color):
     """Creates a full list of 13 (colored) cards."""
-    array = []
+    array = list()
     for i in range(1, 14):
         array.append(ColoredCard(i, color))
     return array
@@ -36,7 +36,7 @@ def create13_colored_cards(color):
 
 def create_special_cards():
     """Create all 4 special cards"""
-    array = []
+    array = list()
     for i in range(0, 4):
         array.append(create_zauberer())
         array.append(create_narr())

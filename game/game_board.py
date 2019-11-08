@@ -1,10 +1,11 @@
-from game.cards import *
-from game.testing import test_print
+class GameBoardMeta(type):
+    _instance = None
+
+    def __call__(self):
+        if self._instance is None:
+            self._instance = super().__call__()
+        return self._instance
 
 
-def init():
-    card_deck = create_all_cards()
-    test_print(card_deck)
-
-
-init()
+class GameBoard(metaclass=GameBoardMeta):
+    pass
