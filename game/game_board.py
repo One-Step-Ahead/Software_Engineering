@@ -22,6 +22,7 @@ class GameBoard(metaclass=GameBoardMeta):
         self.rounds_total = get_rounds_total(player_total)
 
     def new_round(self):
+        # Reihenfolge ist wichtig!
         self.round += 1
         self.reset_card_deck()
         self.prepare_players()

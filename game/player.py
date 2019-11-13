@@ -1,14 +1,14 @@
-from random import choice
+from random import choice  # Joyce
 
-from game.cards import SpecialCard
+from game.cards import SpecialCard, Card
 
 
 class Player:
 
     def __init__(self, player_number):
         self.id = player_number
-        self.score = 0
-        self.hand = []
+        self.score = int(0)
+        self.hand = list()
         self.stich_score = int
 
     def draw_card(self, card_deck: list, amount=1):
@@ -17,10 +17,12 @@ class Player:
             self.hand.append(selected_card)
             card_deck.remove(selected_card)
 
-    def play_card(self):
+    def play_card(self, card: Card):
         pass
 
     def get_number_of_special_cards(self):
+        """Returns the number of special cards in the hand of the Player"""
+
         cards = 0
         for i in self.hand:
             if isinstance(i, SpecialCard):
