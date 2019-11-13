@@ -1,14 +1,16 @@
-from game.cards import *
+from game.cards import Card, create_all_cards
 from game.player import *
+from game.score_board import ScoreBoard
+from random import choice
 
 
 class GameBoardMeta(type):
     _instance = None
 
-    def __call__(self, player_total):
-        if self._instance is None:
-            self._instance = super().__call__(player_total)
-        return self._instance
+    def __call__(cls, player_total):
+        if cls._instance is None:
+            cls._instance = super().__call__(player_total)
+        return cls._instance
 
 
 class GameBoard(metaclass=GameBoardMeta):
@@ -20,6 +22,8 @@ class GameBoard(metaclass=GameBoardMeta):
         self.round = 0
         self.atut = Card
         self.rounds_total = get_rounds_total(player_total)
+        self.score_board = ScoreBoard(self.round)
+        self.current_player = Player
 
     def new_round(self):
         # Reihenfolge ist wichtig!
@@ -48,6 +52,10 @@ class GameBoard(metaclass=GameBoardMeta):
         else:
             self.atut = None
 
+    def game_loop(self):
+        self.new_round()
+        self.score_board.make_prediction(self.current_player, 1)
+
 
 def create_players(total_player_number):
     players = []
@@ -67,3 +75,4 @@ def get_rounds_total(total_player_number: int):
         return 10
     else:
         raise ValueError("PlayerCount needs to be between 3-6!")
+

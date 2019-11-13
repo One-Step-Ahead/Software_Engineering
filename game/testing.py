@@ -1,5 +1,5 @@
 from game.game_board import GameBoard
-from game.player import *
+from game.player import Player
 
 
 def test(g: GameBoard):
@@ -9,6 +9,7 @@ def test(g: GameBoard):
         g.new_round()
         print_atut(g)
         test_print_players_cards(g.players)
+        make_prediction_test(g)
 
 
 def test_print_cards(card_deck: list):
@@ -38,10 +39,14 @@ def check_player_hand_cards(player: Player):
         i.print_card()
 
 
-def print_atut(g):
+def print_atut(g: GameBoard):
     if g.round != g.rounds_total:
         print("Atut this round: ", end='')
         g.atut.print_card()
         print()
     else:
         print("Atut this round: None")
+
+
+def make_prediction_test(g: GameBoard):
+    g.score_board.make_prediction(g.players[0], 5)
