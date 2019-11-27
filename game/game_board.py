@@ -23,10 +23,14 @@ class GameBoard(metaclass=GameBoardMeta):
         self.actual_round_count = 0
         self.round = Round
 
+    def game_loop(self):
+        self.new_round()
+
     def new_round(self):
         # Reihenfolge ist wichtig!
         self.actual_round_count += 1
-        self.score_board.rounds.append(Round(self.actual_round_count))
+        self.score_board.round_score.append(
+            Round(self.actual_round_count))  # erstellt neue Runde und fügt sie in die Liste round_score hinzu
         self.reset_card_deck()
         self.prepare_players()
         self.set_new_atut(self.rounds_total, self.card_deck)
@@ -41,10 +45,6 @@ class GameBoard(metaclass=GameBoardMeta):
     def reset_card_deck(self):
         self.card_deck.clear()
         self.card_deck = create_all_cards()
-
-    def game_loop(self):
-        self.new_round()
-        self.score_board.make_prediction(self.round.current_player, 1)
 
     def set_new_atut(self, rounds_total: int, card_deck: list):
         if self.actual_round_count != rounds_total:
