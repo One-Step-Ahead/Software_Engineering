@@ -2,7 +2,8 @@ from game.cards import create_all_cards
 from game.player import *
 from game.round import Round
 from game.score_board import ScoreBoard
-
+from collections import deque
+from game.rules import play_round
 
 class GameBoardMeta(type):
     _instance = None
@@ -22,15 +23,26 @@ class GameBoard(metaclass=GameBoardMeta):
         self.score_board = ScoreBoard()
         self.actual_round_count = 0
         self.round = Round
+        self.player_queue = deque(self.players)
 
     def game_loop(self):
-        self.new_round()
+        for i in range(0, self.rounds_total):
+            self.new_round()
+            play_round()
+            self.cycle_player_q()
 
     def new_round(self):
-        # Reihenfolge ist wichtig!
+        """
+        Reihenfolge wichtig!
+        1. rundencoutn erhöht
+        2. erstellt neue Runde und fügt sie in die Liste round_score hinzu
+        .
+        .
+        .
+        """
+
         self.actual_round_count += 1
-        self.score_board.round_score.append(
-            Round(self.actual_round_count))  # erstellt neue Runde und fügt sie in die Liste round_score hinzu
+        self.score_board.round_score.append(Round(self.actual_round_count))
         self.reset_card_deck()
         self.prepare_players()
         self.set_new_atut(self.rounds_total, self.card_deck)
@@ -51,6 +63,9 @@ class GameBoard(metaclass=GameBoardMeta):
             self.round.atut = choice(card_deck)
         else:
             self.round.atut = Card()
+
+    def cycle_player_q(self):
+        self.player_queue.append(self.player_queue.popleft())
 
 
 def create_players(total_player_number):

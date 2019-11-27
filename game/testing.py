@@ -11,9 +11,6 @@ def test(g: GameBoard):
         test_print_players_cards(g.players)
 
 
-#        make_prediction_test(g)
-
-
 def test_print_cards(card_deck: list):
     print('Total number of Cards in Deck:', len(card_deck))
     print('{ ', end='')
