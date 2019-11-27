@@ -1,0 +1,2 @@
+class Stich:
+    pass

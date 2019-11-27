@@ -1,9 +1,11 @@
+from collections import deque
+
 from game.cards import create_all_cards
 from game.player import *
 from game.round import Round
-from game.score_board import ScoreBoard
-from collections import deque
 from game.rules import play_round
+from game.score_board import ScoreBoard
+
 
 class GameBoardMeta(type):
     _instance = None
@@ -21,45 +23,39 @@ class GameBoard(metaclass=GameBoardMeta):
         self.rounds_total = get_rounds_total(player_total)
         self.card_deck = list()
         self.score_board = ScoreBoard()
-        self.actual_round_count = 0
+        self.current_round_count = 0
         self.round = Round
         self.player_queue = deque(self.players)
 
     def game_loop(self):
         for i in range(0, self.rounds_total):
             self.new_round()
-            play_round()
+            play_round(self)
             self.cycle_player_q()
 
     def new_round(self):
-        """
-        Reihenfolge wichtig!
-        1. rundencoutn erhöht
-        2. erstellt neue Runde und fügt sie in die Liste round_score hinzu
-        .
-        .
-        .
-        """
-
-        self.actual_round_count += 1
-        self.score_board.round_score.append(Round(self.actual_round_count))
+        self.current_round_count += 1
+        self.create_new_round()
         self.reset_card_deck()
         self.prepare_players()
         self.set_new_atut(self.rounds_total, self.card_deck)
-        print('New Round! [', self.actual_round_count, ']', sep='')
+        print('New Round! [', self.current_round_count, ']', sep='')
+
+    def create_new_round(self):
+        self.score_board.round_score.append(Round(self.current_round_count))
 
     def prepare_players(self):
         for i in self.players:
             i.hand.clear()
             i.stich_score = 0
-            i.draw_card(self.card_deck, self.actual_round_count)
+            i.draw_card(self.card_deck, self.current_round_count)
 
     def reset_card_deck(self):
         self.card_deck.clear()
         self.card_deck = create_all_cards()
 
     def set_new_atut(self, rounds_total: int, card_deck: list):
-        if self.actual_round_count != rounds_total:
+        if self.current_round_count != rounds_total:
             self.round.atut = choice(card_deck)
         else:
             self.round.atut = Card()
