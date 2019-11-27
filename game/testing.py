@@ -9,7 +9,9 @@ def test(g: GameBoard):
         g.new_round()
         print_atut(g)
         test_print_players_cards(g.players)
-        make_prediction_test(g)
+
+
+#        make_prediction_test(g)
 
 
 def test_print_cards(card_deck: list):
@@ -42,7 +44,7 @@ def check_player_hand_cards(player: Player):
 def print_atut(g: GameBoard):
     if g.round != g.rounds_total:
         print("Atut this round: ", end='')
-        g.atut.print_card()
+        g.round.atut.print_card()
         print()
     else:
         print("Atut this round: None")

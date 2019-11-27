@@ -1,11 +1,16 @@
 class Card:
+    def __init__(self):
+        pass
+
     def print_card(self):
+        print("[None]", end='')
         pass
 
 
 class ColoredCard(Card):
 
     def __init__(self, card_number, card_color):
+        super().__init__()
         self.cardColor = card_color
         self.cardNumber = card_number
 
@@ -17,14 +22,15 @@ class ColoredCard(Card):
 class SpecialCard(Card):
 
     def __init__(self, card_type):
+        super().__init__()
         self.cardType = card_type
 
     def print_card(self):
         print('[', self.cardType, sep='', end=']')
 
 
-def create_all_cards(card_deck: list):
-    card_deck += create13_colored_cards("red")
+def create_all_cards():
+    card_deck = create13_colored_cards("red")
     card_deck += create13_colored_cards("blue")
     card_deck += create13_colored_cards("green")
     card_deck += create13_colored_cards("yellow")

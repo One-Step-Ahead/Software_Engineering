@@ -1,16 +1,17 @@
 from game.player import Player
+from game.round import Round
 
 
 class ScoreBoard:
 
-    def __init__(self, round: int):
+    def __init__(self):
         self.total_score = list()
         self.round_score = list()
         self.prediction_total = list()
-        self.round = round
+        self.rounds = []
 
-    def make_prediction(self, player: Player, prediction: int):
-        self.prediction_total.append(Prediction(player, prediction, self.round))
+    def make_prediction(self, player: Player, prediction: int, round: Round):
+        self.prediction_total.append(Prediction(player, prediction, round.round_nr))
 
 
 class Prediction:
