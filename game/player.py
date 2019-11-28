@@ -17,8 +17,13 @@ class Player:
             self.hand.append(selected_card)
             card_deck.remove(selected_card)
 
-    def play_card(self, card: Card):
-        pass
+    def play_card(self, card: Card, played_cards: list):
+        """
+        Adds the played card to the played_card list.
+        Also removes the played card from the players hand.
+        """
+        played_cards.append(card)
+        self.hand.remove(card)
 
     def get_number_of_special_cards(self):
         """Returns the number of special cards in the hand of the Player"""

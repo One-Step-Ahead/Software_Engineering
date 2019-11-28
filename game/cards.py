@@ -62,3 +62,7 @@ def create_zauberer():
 
 def create_narr():
     return SpecialCard('n')
+
+
+def input_card() -> Card:  # todo implement input_card
+    user_input = input('What card do you want to play?')
