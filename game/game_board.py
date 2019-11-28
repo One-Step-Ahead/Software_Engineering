@@ -42,7 +42,9 @@ class GameBoard(metaclass=GameBoardMeta):
         print('New Round! [', self.current_round_count, ']', sep='')
 
     def create_new_round(self):
-        self.score_board.round_score.append(Round(self.current_round_count))
+        new_round = Round(self.current_round_count)
+        self.score_board.round_score.append(new_round)
+        self.round = new_round
 
     def prepare_players(self):
         for i in self.players:
