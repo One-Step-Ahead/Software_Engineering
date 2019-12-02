@@ -21,7 +21,7 @@ class ColoredCard(Card):
 
 class SpecialCard(Card):
 
-    def __init__(self, card_type):
+    def __init__(self, card_type: str):
         super().__init__()
         self.cardType = card_type
 

@@ -1,3 +1,4 @@
+from game.cards import ColoredCard
 from game.cards import input_card
 from game.game_board import *
 
@@ -31,8 +32,13 @@ def farbzwang_check(card_about_to_be_played: Card, cards_in_play: list) -> bool:
     """
     :return True if card matches playable "Farbzwang" conditions
     """
-    if type(card_about_to_be_played) is type(cards_in_play[0]):
+    first_played_card = cards_in_play[0]
+
+    if isinstance(card_about_to_be_played, SpecialCard):
         return True
+    elif isinstance(card_about_to_be_played, ColoredCard) and isinstance(first_played_card, ColoredCard):
+        if card_about_to_be_played.cardColor == first_played_card.cardColor:
+            return True
     else:
         return False
 
@@ -56,5 +62,6 @@ def play_round(gameboard):
             chosen_card = input_card()
             if check_if_playable(chosen_card, gameboard.round.cards_in_play, i.hand):
                 allowed = False
+            else:
                 print('You are not allowed to play this card right now!')
         i.play_card(chosen_card, i.hand)
