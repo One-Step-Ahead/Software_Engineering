@@ -1,9 +1,11 @@
+from collections import deque
+
 from game.player import Player
 
 
 class Stich:
-    def __init__(self):
-        self.player_q = list
+    def __init__(self, player_q: deque):
+        self.player_q = player_q
         self.cards_in_play = list
         self.winner = Player
 

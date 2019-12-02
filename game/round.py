@@ -8,9 +8,7 @@ class Round:
         self.atut = Card
         self.cards_in_play = list()
         self.all_predictions = dict()
-
-    def new_stich(self):
-        self.cards_in_play.clear()
+        self.all_stich = list()
 
     def new_prediction(self, player, anz_stiche):
         if anz_stiche > self.round_nr:

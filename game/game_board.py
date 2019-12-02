@@ -3,8 +3,8 @@ from collections import deque
 from game.cards import create_all_cards
 from game.player import *
 from game.round import Round
-from game.rules import play_stich
 from game.score_board import ScoreBoard
+from game.stich import Stich
 
 
 class GameBoardMeta(type):
@@ -24,14 +24,9 @@ class GameBoard(metaclass=GameBoardMeta):
         self.card_deck = list()
         self.score_board = ScoreBoard()
         self.current_round_count = 0
-        self.round = Round
+        self.current_round = Round
         self.player_queue = deque(self.players)
 
-    def game_loop(self):
-        for i in range(0, self.rounds_total):
-            self.new_round()
-            play_stich(self)
-            self.cycle_player_q()
 
     def new_round(self):
         self.current_round_count += 1
@@ -44,7 +39,7 @@ class GameBoard(metaclass=GameBoardMeta):
     def create_new_round(self):
         new_round = Round(self.current_round_count)
         self.score_board.round_score.append(new_round)
-        self.round = new_round
+        self.current_round = new_round
 
     def prepare_players(self):
         for i in self.players:
@@ -58,19 +53,12 @@ class GameBoard(metaclass=GameBoardMeta):
 
     def set_new_atut(self, rounds_total: int, card_deck: list):
         if self.current_round_count != rounds_total:
-            self.round.atut = choice(card_deck)
+            self.current_round.atut = choice(card_deck)
         else:
-            self.round.atut = Card()
+            self.current_round.atut = Card()
 
     def cycle_player_q(self):
         self.player_queue.append(self.player_queue.popleft())
-
-
-def create_players(total_player_number):
-    players = []
-    for i in range(0, total_player_number):
-        players.append(Player(i))
-    return players
 
 
 def get_rounds_total(total_player_number: int) -> int:
@@ -84,3 +72,20 @@ def get_rounds_total(total_player_number: int) -> int:
         return 10
     else:
         raise ValueError("PlayerCount needs to be between 3-6!")
+
+
+def create_players(total_player_number):
+    players = []
+    for i in range(0, total_player_number):
+        players.append(Player(i))
+    return players
+
+
+def game_loop(self):
+    for i in range(0, self.rounds_total):
+        self.new_round()
+        for j in range(self.current_round_count):
+            new_stich = Stich(self.player_queue)
+            self.current_round.all_stich.appned(new_stich)
+            new_stich.play()
+        self.cycle_player_q()
