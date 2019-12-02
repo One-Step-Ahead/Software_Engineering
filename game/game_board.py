@@ -27,7 +27,6 @@ class GameBoard(metaclass=GameBoardMeta):
         self.current_round = Round
         self.player_queue = deque(self.players)
 
-
     def new_round(self):
         self.current_round_count += 1
         self.create_new_round()
