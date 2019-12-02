@@ -53,9 +53,33 @@ def cant_serve(cards_in_play: list, player_hand: list):
     return True
 
 
-def play_round(gameboard):
+def get_player(player_number: int, player_q: list):
+    return player_q[player_number]
+
+
+def check_stich_winner(cards_in_play: list, player_q: list) -> Player:
+    """
+
+    :param cards_in_play:
+    :return: Player that won the Stich
+    """
+    if check_wizzad_win(cards_in_play):  # todo Bitte mit Stich implementieren (returnt nix)
+        return Player
+
+
+def check_wizzad_win(cards_in_play: list):
+    for i in cards_in_play:
+        if isinstance(i, SpecialCard):
+            if i.cardType == 'z':
+                return True
+        else:
+            return False
+
+
+def play_stich(gameboard):
     allowed = bool
     chosen_card = Card
+
     for i in gameboard.player_queue:
         print("It is now the turn of Player:", i.id)
         while allowed:
@@ -65,3 +89,4 @@ def play_round(gameboard):
             else:
                 print('You are not allowed to play this card right now!')
         i.play_card(chosen_card, i.hand)
+    check_stich_winner()

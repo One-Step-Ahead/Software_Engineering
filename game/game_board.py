@@ -3,7 +3,7 @@ from collections import deque
 from game.cards import create_all_cards
 from game.player import *
 from game.round import Round
-from game.rules import play_round
+from game.rules import play_stich
 from game.score_board import ScoreBoard
 
 
@@ -30,7 +30,7 @@ class GameBoard(metaclass=GameBoardMeta):
     def game_loop(self):
         for i in range(0, self.rounds_total):
             self.new_round()
-            play_round(self)
+            play_stich(self)
             self.cycle_player_q()
 
     def new_round(self):
