@@ -83,7 +83,7 @@ def play_stich(gameboard):
     for i in gameboard.player_queue:
         print("It is now the turn of Player:", i.id)
         while allowed:
-            chosen_card = input_card()
+            chosen_card = input_card()  # todo übergabeparameter?
             if check_if_playable(chosen_card, gameboard.round.cards_in_play, i.hand):
                 allowed = False
             else:
