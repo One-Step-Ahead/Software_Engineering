@@ -24,7 +24,7 @@ class GameBoard(metaclass=GameBoardMeta):
         self.card_deck = list()
         self.score_board = ScoreBoard()
         self.current_round_count = 0
-        self.current_round = Round
+        self.current_round = None
         self.player_queue = deque(self.players)
 
     def new_round(self):
@@ -32,7 +32,7 @@ class GameBoard(metaclass=GameBoardMeta):
         self.create_new_round()
         self.reset_card_deck()
         self.prepare_players()
-        self.set_new_atut(self.rounds_total, self.card_deck)
+        self.current_round(self.rounds_total, self.card_deck)
         print('New Round! [', self.current_round_count, ']', sep='')
 
     def create_new_round(self):
@@ -50,14 +50,17 @@ class GameBoard(metaclass=GameBoardMeta):
         self.card_deck.clear()
         self.card_deck = create_all_cards()
 
-    def set_new_atut(self, rounds_total: int, card_deck: list):
-        if self.current_round_count != rounds_total:
-            self.current_round.atut = choice(card_deck)
-        else:
-            self.current_round.atut = Card()
-
     def cycle_player_q(self):
         self.player_queue.append(self.player_queue.popleft())
+
+    def game_loop(self):
+        for i in range(0, self.rounds_total):
+            self.new_round()
+            for j in range(self.current_round_count):
+                new_stich = Stich(self.player_queue, self.current_round.atut)
+                self.current_round.append(new_stich)
+                new_stich.play(self.player_queue)
+            self.cycle_player_q()
 
 
 def get_rounds_total(total_player_number: int) -> int:
@@ -78,13 +81,3 @@ def create_players(total_player_number):
     for i in range(0, total_player_number):
         players.append(Player(i))
     return players
-
-
-def game_loop(self):
-    for i in range(0, self.rounds_total):
-        self.new_round()
-        for j in range(self.current_round_count):
-            new_stich = Stich(self.player_queue)
-            self.current_round.all_stich.appned(new_stich)
-            new_stich.play()
-        self.cycle_player_q()

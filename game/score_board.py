@@ -11,7 +11,7 @@ class ScoreBoard:
 
     def __init__(self):
         self.total_score = list()  # liste mit allen round scores/endergebnissen aller runden
-        self.round_score = list()  # anzahl angesagter sticht/gemachter stiche einer spezifischen runde
+        self.round_score = list()  # Liste mit allen Round Objekten
 
     def winner(self, player):
         """

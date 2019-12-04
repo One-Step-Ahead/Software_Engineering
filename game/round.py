@@ -1,3 +1,5 @@
+from random import choice
+
 from game.cards import Card
 
 
@@ -16,3 +18,9 @@ class Round:
             raise ValueError  # ist die python form von exception throw
         else:
             self.all_predictions[player] = anz_stiche
+
+    def set_new_atut(self, rounds_total: int, card_deck: list):
+        if self.round_nr != rounds_total:
+            self.atut = choice(card_deck)
+        else:
+            self.atut = None
