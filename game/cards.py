@@ -9,14 +9,14 @@ class Card:
 
 class ColoredCard(Card):
 
-    def __init__(self, card_number, card_color):
+    def __init__(self, card_number: int, card_color: str):
         super().__init__()
-        self.cardColor = card_color
-        self.cardNumber = card_number
+        self.card_color = card_color
+        self.card_value = card_number
 
     def print_card(self):
-        print('[', self.cardColor, sep='', end='|')
-        print(self.cardNumber, end=']')
+        print('[', self.card_color, sep='', end='|')
+        print(self.card_value, end=']')
 
 
 class SpecialCard(Card):

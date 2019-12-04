@@ -1,13 +1,13 @@
 from random import choice
 
-from game.cards import Card
+from game.cards import ColoredCard
 
 
 class Round:
 
     def __init__(self, actual_round: int):
         self.round_nr = actual_round
-        self.atut = Card
+        self.atut = ColoredCard
         self.cards_in_play = list()
         self.all_predictions = dict()
         self.all_stich = list()
@@ -21,6 +21,10 @@ class Round:
 
     def set_new_atut(self, rounds_total: int, card_deck: list):
         if self.round_nr != rounds_total:
-            self.atut = choice(card_deck)
+            new_atut = choice(card_deck)
+            if isinstance(new_atut, ColoredCard):
+                self.atut = new_atut
+            else:  # todo wizzard extra regel!
+                self.atut = None
         else:
             self.atut = None

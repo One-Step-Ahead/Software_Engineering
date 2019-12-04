@@ -5,10 +5,11 @@ from game.game_board import Player, Card, SpecialCard
 
 
 class Stich:
-    def __init__(self, player_q: deque):
+    def __init__(self, player_q: deque, atut: ColoredCard):
         self.player_q = player_q
         self.cards_in_play = list()
         self.winner = Player
+        self.atut = atut
 
     def farbzwang_check(self, card_about_to_be_played: Card) -> bool:
         """
@@ -19,7 +20,7 @@ class Stich:
         if isinstance(card_about_to_be_played, SpecialCard):
             return True
         elif isinstance(card_about_to_be_played, ColoredCard) and isinstance(first_played_card, ColoredCard):
-            if card_about_to_be_played.cardColor == first_played_card.cardColor:
+            if card_about_to_be_played.card_color == first_played_card.card_color:
                 return True
         else:
             return False
@@ -64,13 +65,68 @@ class Stich:
             player_number += 1
         return False
 
+    def compare_cards(self, card1: ColoredCard, card2: ColoredCard):
+        if card1.card_value > card2.card_value:
+            return card1
+        else:
+            return card2
+
+    def check_colored_win(self):
+        """
+        This method checks for:
+            Atut
+            if Farbzwang got satisfied
+            if there are only Narren being played
+        """
+        dominant_color = None
+        for i in self.cards_in_play:
+            if isinstance(i, SpecialCard):
+                continue
+            elif isinstance(i, ColoredCard):
+                dominant_color = i.card_color
+            else:
+                self.winner = self.get_player(0)
+                return True
+
+        strongest_card = None
+        for i in self.cards_in_play:
+            if isinstance(i, ColoredCard):
+                if strongest_card is None:
+                    strongest_card = i
+                    continue
+                elif i.card_color != dominant_color:
+                    continue
+                elif strongest_card.card_color == self.atut.card_color and i.card_color != self.atut.card_color:
+                    continue
+                elif i.card_color == self.atut.card_color:
+                    if strongest_card.card_color != self.atut.card_color:
+                        strongest_card = i
+                        continue
+                    else:
+                        if i.card_value > i.card_color:
+                            strongest_card = i
+                            continue
+                        else:
+                            continue
+                else:
+                    if i.card_value > i.card_color:
+                        strongest_card = i
+                        continue
+                    else:
+                        continue
+        self.winner = self.get_player(self.cards_in_play.index(strongest_card))
+        return True
+
     def check_stich_winner(self) -> type(Player):
         """
         :return: Player that won the Stich
         """
-
         if self.check_wizard_win():
             return self.winner
+        if self.check_colored_win():
+            return self.winner
+        else:
+            raise RuntimeError('The system was not able to find a card that won the Stich! Please fix me!')
 
     def play(self, player_queue: deque):
         """

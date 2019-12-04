@@ -32,7 +32,7 @@ class GameBoard(metaclass=GameBoardMeta):
         self.create_new_round()
         self.reset_card_deck()
         self.prepare_players()
-        self.current_round(self.rounds_total, self.card_deck)
+        self.current_round.set_new_atut(self.rounds_total, self.card_deck)
         print('New Round! [', self.current_round_count, ']', sep='')
 
     def create_new_round(self):
