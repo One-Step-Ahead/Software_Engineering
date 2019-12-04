@@ -33,14 +33,6 @@ class Stich:
                 return False
         return True
 
-    def check_wizzad_win(self):
-        for i in self.cards_in_play:
-            if isinstance(i, SpecialCard):
-                if i.cardType == 'z':
-                    return True
-            else:
-                return False
-
     def check_if_playable(self, chosen_card: Card, player: Player) -> bool:
         """
         Checks if the card you are about to play is legit.
@@ -59,30 +51,40 @@ class Stich:
         else:
             return False
 
-    def get_player(self, player_number: int, player_q: list):
-        return player_q[player_number]
+    def get_player(self, player_number: int):
+        return self.player_q[player_number]
+
+    def check_wizard_win(self):
+        player_number = 0
+        for i in self.cards_in_play:
+            if isinstance(i, SpecialCard):
+                if i.cardType == 'z':
+                    self.winner = self.get_player(player_number)
+                    return True
+            player_number += 1
+        return False
 
     def check_stich_winner(self) -> type(Player):
         """
         :return: Player that won the Stich
         """
 
-        if self.check_wizzad_win():
+        if self.check_wizard_win():
             return self.winner
 
     def play(self, player_queue: deque):
         """
-        Execute the Stich!
+        Execute the Stich.
         """
-        allowed = bool
+        correct_input = bool
         chosen_card = Card
 
         for i in player_queue:
             print("It is now the turn of Player:", i.id)
-            while allowed:
+            while correct_input:
                 chosen_card = input_card(i.hand)
                 if self.check_if_playable(chosen_card, i):
-                    allowed = False
+                    correct_input = False
                 else:
                     print('You are not allowed to play this card right now!')
             i.play_card(chosen_card, player_queue)
