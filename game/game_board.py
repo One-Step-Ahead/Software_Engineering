@@ -24,21 +24,13 @@ class GameBoard(metaclass=GameBoardMeta):
         self.card_deck = list()
         self.score_board = ScoreBoard()
         self.current_round_count = 0
-        self.current_round = None
         self.player_queue = deque(self.players)
 
-    def new_round(self):
-        self.current_round_count += 1
-        self.create_new_round()
-        self.reset_card_deck()
-        self.prepare_players()
-        self.current_round.set_new_atut(self.rounds_total, self.card_deck)
-        print('New Round! [', self.current_round_count, ']', sep='')
+    def get_current_round(self) -> Round:
+        return self.score_board.round_score[self.current_round_count]
 
     def create_new_round(self):
-        new_round = Round(self.current_round_count)
-        self.score_board.round_score.append(new_round)
-        self.current_round = new_round
+        self.score_board.round_score.append(Round(self.current_round_count))
 
     def prepare_players(self):
         for i in self.players:
@@ -53,12 +45,20 @@ class GameBoard(metaclass=GameBoardMeta):
     def cycle_player_q(self):
         self.player_queue.append(self.player_queue.popleft())
 
+    def new_round(self):
+        self.current_round_count += 1
+        self.create_new_round()
+        self.reset_card_deck()
+        self.prepare_players()
+        self.get_current_round().set_new_atut(self.rounds_total, self.card_deck)
+        print('New Round! [', self.current_round_count, ']', sep='')
+
     def game_loop(self):
         for i in range(0, self.rounds_total):
             self.new_round()
             for j in range(self.current_round_count):
-                new_stich = Stich(self.player_queue, self.current_round.atut)
-                self.current_round.append(new_stich)
+                new_stich = Stich(self.player_queue, self.get_current_round().atut)
+                self.get_current_round().all_stich.append(new_stich)
                 new_stich.play(self.player_queue)
             self.cycle_player_q()
 
@@ -76,7 +76,7 @@ def get_rounds_total(total_player_number: int) -> int:
         raise ValueError("PlayerCount needs to be between 3-6!")
 
 
-def create_players(total_player_number):
+def create_players(total_player_number) -> list:
     players = []
     for i in range(0, total_player_number):
         players.append(Player(i))
