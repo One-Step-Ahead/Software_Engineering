@@ -103,13 +103,13 @@ class Stich:
                         strongest_card = i
                         continue
                     else:
-                        if i.card_value > i.card_color:
+                        if strongest_card.card_value < i.card_value:
                             strongest_card = i
                             continue
                         else:
                             continue
                 else:
-                    if i.card_value > i.card_color:
+                    if strongest_card.card_value < i.card_value:
                         strongest_card = i
                         continue
                     else:

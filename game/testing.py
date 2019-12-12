@@ -39,11 +39,11 @@ def check_player_hand_cards(player: Player):
 
 
 def print_atut(g: GameBoard):
-    if g.current_round.atut is None:
+    if g.get_current_round().atut is None:
         print("Atut this round: None")
-    elif g.current_round != g.rounds_total:
+    elif g.get_current_round() != g.rounds_total:
         print("Atut this round: ", end='')
-        g.current_round.atut.print_card()
+        g.get_current_round().atut.print_card()
         print()
 
 
