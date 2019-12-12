@@ -36,7 +36,7 @@ class GameBoard(metaclass=GameBoardMeta):
         for i in self.players:
             i.hand.clear()
             i.stich_score = 0
-            i.draw_card(self.card_deck, self.current_round_count)
+            i.draw_random_card(self.card_deck, self.current_round_count)
 
     def reset_card_deck(self):
         self.card_deck.clear()

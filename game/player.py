@@ -11,11 +11,10 @@ class Player:
         self.hand = list()
         self.stich_score = int
 
-    def draw_card(self, card_deck: list, amount=1):
+    def draw_random_card(self, card_deck: list, amount=1):
         for i in range(0, amount):
             selected_card = choice(card_deck)
-            self.hand.append(selected_card)
-            card_deck.remove(selected_card)
+            self.hand.append(card_deck.pop(selected_card))
 
     def play_card(self, card: Card, played_cards: list):
         """
