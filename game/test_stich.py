@@ -50,3 +50,11 @@ class TestStichWinner(TestCase):
         self.s.cards_in_play.append(SpecialCard('n'))
 
         self.assertEqual(self.s.check_stich_winner(), self.s.player_q[2])
+
+    def test_dominant_color_win(self):
+        self.s.cards_in_play.append(ColoredCard(12, 'green'))
+        self.s.cards_in_play.append(ColoredCard(10, 'green'))
+        self.s.cards_in_play.append(ColoredCard(13, 'yellow'))
+        self.s.cards_in_play.append(ColoredCard(9, 'blue'))
+
+        self.assertEqual(self.s.check_stich_winner(), self.s.player_q[0])

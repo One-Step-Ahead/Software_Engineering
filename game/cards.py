@@ -76,6 +76,6 @@ def input_card(hand: list, ) -> Card:
         print("Card Nr.:", position_of_handcard, end='')
         i.print_card()
         position_of_handcard += 1
-    selected_card = input('What card do you want to play?')
+    selected_card = input('What card do you want to play?')  # todo Checkt keinen flaschen Input
     selected_card_nr = int(selected_card)
     return hand[selected_card_nr]
