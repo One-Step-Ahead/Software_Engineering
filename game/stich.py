@@ -84,17 +84,13 @@ class Stich:
                 continue
             elif isinstance(i, ColoredCard):
                 dominant_color = i.card_color
-            else:
-                self.winner = self.get_player(0)
-                return True
+                break
 
         strongest_card = None
         for i in self.cards_in_play:
             if isinstance(i, ColoredCard):
                 if strongest_card is None:
                     strongest_card = i
-                    continue
-                elif i.card_color != dominant_color:
                     continue
                 elif strongest_card.card_color == self.atut.card_color and i.card_color != self.atut.card_color:
                     continue
@@ -114,6 +110,9 @@ class Stich:
                         continue
                     else:
                         continue
+        if strongest_card is None:
+            self.winner = self.get_player(0)
+            return True
         self.winner = self.get_player(self.cards_in_play.index(strongest_card))
         return True
 
