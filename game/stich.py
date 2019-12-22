@@ -92,24 +92,21 @@ class Stich:
                 if strongest_card is None:
                     strongest_card = i
                     continue
-                elif strongest_card.card_color == self.atut.card_color and i.card_color != self.atut.card_color:
-                    continue
-                elif i.card_color == self.atut.card_color:
-                    if strongest_card.card_color != self.atut.card_color:
-                        strongest_card = i
-                        continue
-                    else:
+                if strongest_card.card_color == self.atut.card_color:
+                    if i.card_color == strongest_card.card_color:
                         if strongest_card.card_value < i.card_value:
                             strongest_card = i
                             continue
-                        else:
-                            continue
-                else:
+                    continue
+                elif i.card_color == self.atut.card_color:
+                    strongest_card = i
+                    continue
+                elif i.card_color == dominant_color:
                     if strongest_card.card_value < i.card_value:
                         strongest_card = i
                         continue
-                    else:
-                        continue
+                else:
+                    continue
         if strongest_card is None:
             self.winner = self.get_player(0)
             return True
