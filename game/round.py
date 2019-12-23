@@ -1,6 +1,6 @@
 from random import choice
 
-from game.cards import ColoredCard
+from game.cards import ColoredCard, SpecialCard, input_card
 
 
 class Round:
@@ -19,12 +19,22 @@ class Round:
         else:
             self.all_predictions[player] = anz_stiche
 
+    def set_atut_manually(self):
+        chosen_card = input_card([ColoredCard(0, 'red'),
+                                  ColoredCard(0, 'green'),
+                                  ColoredCard(0, 'blue'),
+                                  ColoredCard(0, 'yellow')])
+        self.atut = chosen_card
+
     def set_new_atut(self, rounds_total: int, card_deck: list):
         if self.round_nr != rounds_total:
             new_atut = choice(card_deck)
             if isinstance(new_atut, ColoredCard):
                 self.atut = new_atut
-            else:  # todo wizzard extra regel!
-                self.atut = None
+            elif isinstance(new_atut, SpecialCard):
+                if new_atut.cardType == 'z':
+                    self.set_atut_manually()
+                else:
+                    self.atut = None
         else:
             self.atut = None
