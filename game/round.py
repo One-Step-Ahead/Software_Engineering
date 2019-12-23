@@ -22,7 +22,7 @@ class Round:
             except ValueError:
                 print('Please input a Number! How many "Stiche" will you win?')
 
-    def new_prediction(self, player: Player):
+    def predict(self, player: Player):
         prediction_value = self.input_prediction(player)
         if prediction_value > self.round_nr:
             print("Called Stiche cant exceed amount of cards in game, please choose a lower number")
