@@ -13,7 +13,7 @@ class ScoreBoard:
         self.total_score = list()  # liste mit allen round scores/endergebnissen aller runden
         self.round_score = list()  # Liste mit allen Round Objekten
 
-    def winner(self, player):
+    def return_winner(self, player):
         """
         soll am ende des spiels ausgeben wer gewonnen hat
         :return:

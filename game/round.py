@@ -1,6 +1,7 @@
 from random import choice
 
 from game.cards import ColoredCard, SpecialCard, input_card
+from game.player import Player
 
 
 class Round:
@@ -12,12 +13,22 @@ class Round:
         self.all_predictions = dict()
         self.all_stich = list()
 
-    def new_prediction(self, player, anz_stiche):
-        if anz_stiche > self.round_nr:
+    def input_prediction(self, player: Player) -> int:
+        print('Player No.:', player.id, 'how many "Stiche" will you win?')
+        while True:
+            try:
+                input_value = int(input())
+                return input_value
+            except ValueError:
+                print('Please input a Number! How many "Stiche" will you win?')
+
+    def new_prediction(self, player: Player):
+        prediction_value = self.input_prediction(player)
+        if prediction_value > self.round_nr:
             print("Called Stiche cant exceed amount of cards in game, please choose a lower number")
             raise ValueError  # ist die python form von exception throw
         else:
-            self.all_predictions[player] = anz_stiche
+            self.all_predictions[player] = prediction_value
 
     def set_atut_manually(self):
         chosen_card = input_card([ColoredCard(0, 'red'),

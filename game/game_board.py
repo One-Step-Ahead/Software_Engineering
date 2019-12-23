@@ -76,7 +76,7 @@ def get_rounds_total(total_player_number: int) -> int:
         raise ValueError("PlayerCount needs to be between 3-6!")
 
 
-def create_players(total_player_number) -> list:
+def create_players(total_player_number: int) -> list:
     players = []
     for i in range(0, total_player_number):
         players.append(Player(i))

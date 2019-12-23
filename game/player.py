@@ -5,7 +5,7 @@ from game.cards import SpecialCard, Card
 
 class Player:
 
-    def __init__(self, player_number):
+    def __init__(self, player_number: int):
         self.id = player_number
         self.score = int(0)
         self.hand = list()
