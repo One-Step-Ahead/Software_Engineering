@@ -60,7 +60,7 @@ class GameBoard(metaclass=GameBoardMeta):
                 self.get_current_round().predict(j)
             for k in range(self.current_round_count):
                 new_stich = Stich(self.player_queue, self.get_current_round().atut)
-                self.get_current_round().all_stich.append(new_stich)
+                self.get_current_round().stiche.append(new_stich)
                 new_stich.play(self.player_queue)
             self.cycle_player_q()
 
