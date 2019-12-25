@@ -1,7 +1,9 @@
+from collections import defaultdict
 from random import choice
 
 from game.cards import ColoredCard, SpecialCard, input_card
 from game.player import Player
+from game.stich import Stich
 
 
 class Round:
@@ -10,8 +12,10 @@ class Round:
         self.round_nr = actual_round
         self.atut = ColoredCard
         self.cards_in_play = list()
-        self.all_predictions = dict()
-        self.all_stich = list()
+        self.predictions = dict()
+        self.stiche = list()
+        self.stiche_won = defaultdict(int)
+        self.score_result = dict()
 
     def input_prediction(self, player: Player) -> int:
         print('Player No.:', player.id, 'how many "Stiche" will you win?')
@@ -28,7 +32,7 @@ class Round:
             print("Called Stiche cant exceed amount of cards in game, please choose a lower number")
             raise ValueError  # ist die python form von exception throw
         else:
-            self.all_predictions[player] = prediction_value
+            self.predictions[player] = prediction_value
 
     def set_atut_manually(self):
         chosen_card = input_card([ColoredCard(0, 'red'),
@@ -49,3 +53,14 @@ class Round:
                     self.atut = None
         else:
             self.atut = None
+
+    def calculate_score(self) -> int:
+        self.count_win()
+
+    def count_win(self):
+        for i in self.stiche:
+            if isinstance(i, Stich):
+                if isinstance(self.stiche_won[i.winner], type(int)):
+                    self.stiche_won[i.winner] = 1
+                else:
+                    self.stiche_won[i.winner] += 1
