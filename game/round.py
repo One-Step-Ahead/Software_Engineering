@@ -64,3 +64,8 @@ class Round:
                     self.stiche_won[i.winner] = 1
                 else:
                     self.stiche_won[i.winner] += 1
+        for i in self.stiche_won:
+            if isinstance(i, int):
+                for j in self.stiche[0].player_q:
+                    if self.stiche[j] is None:
+                        self.stiche[j] = 0
