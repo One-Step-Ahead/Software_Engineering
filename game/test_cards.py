@@ -33,3 +33,15 @@ class TestCountWin(unittest.TestCase):
         with patch('builtins.input', return_value=user_input):
             result = input_card(self.hand)
         self.assertEqual(result, self.hand[19])
+
+    def test_card_wrong_input(self):
+        user_input = 100
+        with patch('builtins.input', return_value=user_input):
+            result = input_card(self.hand)
+            self.assertRaises(IndexError)
+
+    def test_card_wrong_input(self):
+        user_input = -15
+        with patch('builtins.input', return_value=user_input):
+            result = input_card(self.hand)
+            self.assertRaises(ValueError)

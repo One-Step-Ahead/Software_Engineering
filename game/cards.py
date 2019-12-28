@@ -85,5 +85,7 @@ def input_card(hand: list) -> Card:
             break
         except ValueError:
             print('Pleas enter a Number that is greater than 0 (e.g. 1)')
+        except IndexError:
+            print('You dont have that many cards')
     selected_card_nr = int(selected_card) - 1
     return hand[selected_card_nr]
