@@ -54,8 +54,17 @@ class Round:
         else:
             self.atut = None
 
-    def calculate_score(self) -> int:
+    def calculate_score(self, players: list):
         self.count_win()
+        for i in players:
+            if isinstance(i, Player):
+                prediction = self.predictions[i]
+                won = self.stiche_won[i]
+                if prediction == won:
+                    i.score += 20 + (prediction * 10)
+                else:
+                    difference = abs(prediction - won)
+                    i.score -= difference
 
     def count_win(self):
         for i in self.stiche:

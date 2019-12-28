@@ -72,6 +72,7 @@ class GameBoard(metaclass=GameBoardMeta):
                     new_stich = Stich(self.set_stich_queue(k), self.get_current_round().atut)
                 self.get_current_round().stiche.append(new_stich)
                 new_stich.play(self.player_queue)
+            self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
 
 
