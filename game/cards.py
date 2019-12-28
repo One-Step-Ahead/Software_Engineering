@@ -64,7 +64,7 @@ def create_narr():
     return SpecialCard('n')
 
 
-def input_card(hand: list, ) -> Card:
+def input_card(hand: list) -> Card:
     """
     Display available Cards
     Prompts player with input request
@@ -73,9 +73,15 @@ def input_card(hand: list, ) -> Card:
     """
     position_of_handcard = 1
     for i in hand:
-        print("Card Nr.:", position_of_handcard, end='')
+        print("Card", position_of_handcard, end='')
         i.print_card()
+        print(end='  ')
         position_of_handcard += 1
-    selected_card = input('What card do you want to play?')  # todo Checkt keinen flaschen Input
-    selected_card_nr = int(selected_card)
+    while True:
+        try:
+            selected_card = input('What card do you want to play?')  # todo Checkt keinen flaschen Input
+            break
+        except ValueError:
+            print('Pleas enter a Number (e.g. 1)')
+    selected_card_nr = int(selected_card) - 1
     return hand[selected_card_nr]
