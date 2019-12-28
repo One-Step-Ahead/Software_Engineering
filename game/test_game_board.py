@@ -14,5 +14,5 @@ class MyTestCase(unittest.TestCase):
     def test_set_stich_queue(self):
         stich1 = Stich(self.g.player_queue, ColoredCard(1, 'red'))
         stich1.winner = self.g.player_queue[1]
-        self.g.get_current_round().all_stich.append(stich1)
+        self.g.get_current_round().stiche.append(stich1)
         self.assertEqual(self.g.player_queue[1], self.g.set_stich_queue(1)[0])
