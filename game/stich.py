@@ -65,12 +65,6 @@ class Stich:
             player_number += 1
         return False
 
-    def compare_cards(self, card1: ColoredCard, card2: ColoredCard):
-        if card1.card_value > card2.card_value:
-            return card1
-        else:
-            return card2
-
     def check_colored_win(self):
         """
         This method checks for:
