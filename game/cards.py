@@ -79,9 +79,11 @@ def input_card(hand: list) -> Card:
         position_of_handcard += 1
     while True:
         try:
-            selected_card = input('What card do you want to play?')  # todo Checkt keinen flaschen Input
+            selected_card = input('What card do you want to play?')
+            if int(selected_card) < 0:
+                raise ValueError
             break
         except ValueError:
-            print('Pleas enter a Number (e.g. 1)')
+            print('Pleas enter a Number that is greater than 0 (e.g. 1)')
     selected_card_nr = int(selected_card) - 1
     return hand[selected_card_nr]
