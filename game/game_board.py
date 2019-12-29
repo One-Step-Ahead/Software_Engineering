@@ -7,17 +7,7 @@ from game.score_board import ScoreBoard
 from game.stich import Stich
 
 
-class GameBoardMeta(type):
-    _instance = None
-
-    def __call__(cls, player_total):
-        if cls._instance is None:
-            cls._instance = super().__call__(player_total)
-        return cls._instance
-
-
-class GameBoard(metaclass=GameBoardMeta):
-
+class GameBoard:
     def __init__(self, player_total: int):
         self.players = create_players(player_total)
         self.rounds_total = get_rounds_total(player_total)

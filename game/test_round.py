@@ -52,5 +52,5 @@ class MyTestCase(unittest.TestCase):
         round.calculate_score(self.g.players)
         self.assertEqual(self.g.players[0].score, 40)
         self.assertEqual(self.g.players[1].score, -20)
-        self.assertEqual(self.g.players[2].score, 30)
+        self.assertEqual(self.g.players[2].score, 20)
         self.assertEqual(self.g.players[3].score, -10)
