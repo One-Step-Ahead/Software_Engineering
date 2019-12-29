@@ -64,7 +64,7 @@ class Round:
                     i.score += 20 + (prediction * 10)
                 else:
                     difference = abs(prediction - won)
-                    i.score -= difference
+                    i.score -= difference * 10
 
     def count_win(self):
         for i in self.stiche:
