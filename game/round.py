@@ -1,7 +1,7 @@
 from collections import defaultdict
 from random import choice
 
-from game.cards import ColoredCard, SpecialCard, input_card
+from game.cards import ColoredCard, SpecialCard, input_card, Card
 from game.player import Player
 from game.stich import Stich
 
@@ -19,6 +19,11 @@ class Round:
 
     def input_prediction(self, player: Player) -> int:
         print('Player No.:', player.id, 'how many "Stiche" will you win?')
+        print('Cards currently in your hand: ')
+        for i in player.hand:
+            if isinstance(i, Card):
+                i.print_card()
+        print()
         while True:
             try:
                 input_value = int(input())
