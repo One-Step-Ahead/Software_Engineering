@@ -88,14 +88,15 @@ class GameBoard:
             self.cycle_player_q()
         self.complete_game()
 
-    def start_game(self):
+    def get_player_names(self):
         for i in self.players:
             if isinstance(i, Player):
                 if self.display_mode:
-                    i.set_name_cli_input()
-                else:
-                    pass
-                    # i.set_name()
+                    i.set_name()
+
+    def start_game(self):
+        self.get_player_names()
+        self.game_loop()
 
 
 def get_rounds_total(total_player_number: int) -> int:

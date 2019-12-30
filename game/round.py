@@ -22,15 +22,21 @@ class Round:
         while True:
             try:
                 input_value = int(input())
-                return input_value
+                if input_value <= self.round_nr:
+                    return input_value
+                else:
+                    continue
             except ValueError:
                 print('Please input a Number! How many "Stiche" will you win?')
 
-    def predict(self, player: Player):
-        prediction_value = self.input_prediction(player)
+    def predict(self, player: Player, prediction=None):
+        if prediction is None:
+            prediction_value = self.input_prediction(player)
+        else:
+            prediction_value = int(prediction)
         if prediction_value > self.round_nr:
             print("Called Stiche cant exceed amount of cards in game, please choose a lower number")
-            raise ValueError  # ist die python form von exception throw
+            raise ValueError
         else:
             self.predictions[player] = prediction_value
 

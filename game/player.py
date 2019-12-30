@@ -25,19 +25,8 @@ class Player:
         played_cards.append(card)
         self.hand.remove(card)
 
-    def get_number_of_special_cards(self):
-        """Returns the number of special cards in the hand of the Player"""
-
-        cards = 0
-        for i in self.hand:
-            if isinstance(i, SpecialCard):
-                cards += 1
-        return cards
-
-    def set_name(self, name: str):
-        self.name = name
-
-    def set_name_cli_input(self):
-        print('Enter Player name for Player', self.id + 1, ':')
-        name = input()
+    def set_name(self, name='player'):
+        if name == 'player':
+            print('Enter Player name for Player', self.id + 1, ':')
+            name = input()
         self.name = name
