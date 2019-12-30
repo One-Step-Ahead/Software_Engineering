@@ -1,3 +1,6 @@
+from game.player import Player
+
+
 class ScoreBoard:
     """
     total_score = Liste mit allen round scores/Endergebnissen aller Runden.
@@ -12,10 +15,3 @@ class ScoreBoard:
     def __init__(self):
         self.total_score = list()  # liste mit allen round scores/endergebnissen aller runden
         self.round_score = list()  # Liste mit allen Round Objekten
-
-    def return_winner(self, player):
-        """
-        soll am ende des spiels ausgeben wer gewonnen hat
-        :return:
-        """
-        print('congratz', player, 'you won')

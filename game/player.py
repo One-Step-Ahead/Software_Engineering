@@ -5,10 +5,11 @@ from game.cards import SpecialCard, Card
 
 class Player:
 
-    def __init__(self, player_number: int):
+    def __init__(self, player_number: int, name=None):
         self.id = player_number
         self.score = int(0)
         self.hand = list()
+        self.name = name
 
     def draw_random_card(self, card_deck: list, amount=1):
         for i in range(0, amount):
