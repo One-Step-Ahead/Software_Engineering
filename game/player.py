@@ -33,3 +33,11 @@ class Player:
             if isinstance(i, SpecialCard):
                 cards += 1
         return cards
+
+    def set_name(self, name: str):
+        self.name = name
+
+    def set_name_cli_input(self):
+        print('Enter Player name for Player', self.id + 1, ':')
+        name = input()
+        self.name = name

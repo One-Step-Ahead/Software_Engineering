@@ -5,10 +5,12 @@ from game.player import Player
 def test(g: GameBoard):
     test_number_of_players(g.players)
 
-    for i in range(0, g.rounds_total):
-        g.new_round()
-        print_atut(g)
-        test_print_players_cards(g.players)
+    g.game_loop()
+
+    # for i in range(0, g.rounds_total):
+    #     g.new_round()
+    #     print_atut(g)
+    #     test_print_players_cards(g.players)
 
 
 def test_print_cards(card_deck: list):
