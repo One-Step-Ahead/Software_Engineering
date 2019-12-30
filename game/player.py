@@ -24,12 +24,3 @@ class Player:
         """
         played_cards.append(card)
         self.hand.remove(card)
-
-    def get_number_of_special_cards(self):
-        """Returns the number of special cards in the hand of the Player"""
-
-        cards = 0
-        for i in self.hand:
-            if isinstance(i, SpecialCard):
-                cards += 1
-        return cards
