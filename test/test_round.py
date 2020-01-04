@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         del self.g
         del self.players
 
-    def test_score_round_1(self):  # todo find (test)case name
+    def test_score_round_1(self):
         round = Round(1)
         stich1 = Stich(self.g.player_queue, ColoredCard(0, 'red'))
         round.stiche.append(stich1)

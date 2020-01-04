@@ -50,6 +50,23 @@ class GameBoard:
             stich_queue.append(stich_queue.popleft())
         return stich_queue
 
+    def get_winner(self) -> Player:
+        winner = Player
+        for i in self.players:
+            if winner is Player:
+                winner = i
+            if isinstance(i, Player):
+                if i.score > winner.score:
+                    winner = i
+        return winner
+
+    def complete_game(self):
+        winner = self.get_winner()
+        if winner.name is None:
+            print('Winner of the game is:', winner.id + 1)
+        else:
+            print('Winner of the game is:', winner.name)
+
     def game_loop(self):
         for i in range(0, self.rounds_total):
             self.new_round()
@@ -64,6 +81,7 @@ class GameBoard:
                 new_stich.play(self.player_queue)
             self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
+        self.complete_game()
 
 
 def get_rounds_total(total_player_number: int) -> int:
