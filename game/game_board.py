@@ -77,7 +77,7 @@ class GameBoard:
             self.new_round()
             for j in self.player_queue:
                 self.get_current_round().predict(j)
-            for k in range(self.current_round_count):
+            for k in range(1, self.current_round_count):
                 if k == 1:
                     new_stich = Stich(self.player_queue, self.get_current_round().atut)
                 else:
