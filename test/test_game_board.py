@@ -7,7 +7,7 @@ from game.game_board import *
 class MyTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.g = GameBoard(4)
+        self.g = GameBoard(4, True)
         self.g.new_round()
         self.g.new_round()
 

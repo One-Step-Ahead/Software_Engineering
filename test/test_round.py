@@ -8,7 +8,7 @@ from game.stich import Stich
 
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
-        self.g = GameBoard(4)
+        self.g = GameBoard(4, True)
         self.players = self.g.players
 
     def tearDown(self) -> None:

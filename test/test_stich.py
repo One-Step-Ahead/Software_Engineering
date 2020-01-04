@@ -7,7 +7,7 @@ from game.stich import Stich
 
 class TestStichWinner(TestCase):
     def setUp(self) -> None:
-        self.g = GameBoard(4)
+        self.g = GameBoard(4, True)
         self.g.new_round()
         self.s = Stich(self.g.player_queue, ColoredCard(1, 'red'))
 
