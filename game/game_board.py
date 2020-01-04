@@ -8,13 +8,18 @@ from game.stich import Stich
 
 
 class GameBoard:
-    def __init__(self, player_total: int):
+    def __init__(self, player_total: int, display_mode: bool):
+        """
+        :param player_total: total ammount of players that are going to play the game
+        :param display_mode: True: CLI inputs are on; False: CLI inputs are turned off
+        """
         self.players = create_players(player_total)
         self.rounds_total = get_rounds_total(player_total)
         self.card_deck = list()
         self.score_board = ScoreBoard()
         self.current_round_count = 0
         self.player_queue = deque(self.players)
+        self.display_mode = display_mode
 
     def get_current_round(self) -> Round:
         return self.score_board.round_score[self.current_round_count - 1]
@@ -82,6 +87,16 @@ class GameBoard:
             self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
         self.complete_game()
+
+    def get_player_names(self):
+        for i in self.players:
+            if isinstance(i, Player):
+                if self.display_mode:
+                    i.set_name()
+
+    def start_game(self):
+        self.get_player_names()
+        self.game_loop()
 
 
 def get_rounds_total(total_player_number: int) -> int:

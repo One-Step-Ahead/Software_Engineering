@@ -24,3 +24,9 @@ class Player:
         """
         played_cards.append(card)
         self.hand.remove(card)
+
+    def set_name(self, name='player'):
+        if name == 'player':
+            print('Enter Player name for Player', self.id + 1, ':')
+            name = input()
+        self.name = name

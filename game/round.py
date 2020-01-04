@@ -1,7 +1,7 @@
 from collections import defaultdict
 from random import choice
 
-from game.cards import ColoredCard, SpecialCard, input_card
+from game.cards import ColoredCard, SpecialCard, input_card, Card
 from game.player import Player
 from game.stich import Stich
 
@@ -19,18 +19,29 @@ class Round:
 
     def input_prediction(self, player: Player) -> int:
         print('Player No.:', player.id, 'how many "Stiche" will you win?')
+        print('Cards currently in your hand: ')
+        for i in player.hand:
+            if isinstance(i, Card):
+                i.print_card()
+        print()
         while True:
             try:
                 input_value = int(input())
-                return input_value
+                if input_value <= self.round_nr:
+                    return input_value
+                else:
+                    continue
             except ValueError:
                 print('Please input a Number! How many "Stiche" will you win?')
 
-    def predict(self, player: Player):
-        prediction_value = self.input_prediction(player)
+    def predict(self, player: Player, prediction=None):
+        if prediction is None:
+            prediction_value = self.input_prediction(player)
+        else:
+            prediction_value = int(prediction)
         if prediction_value > self.round_nr:
             print("Called Stiche cant exceed amount of cards in game, please choose a lower number")
-            raise ValueError  # ist die python form von exception throw
+            raise ValueError
         else:
             self.predictions[player] = prediction_value
 
