@@ -1,6 +1,3 @@
-from game.player import Player
-
-
 class ScoreBoard:
     """
     total_score = Liste mit allen round scores/Endergebnissen aller Runden.
