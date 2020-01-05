@@ -45,7 +45,9 @@ class GameBoard:
         self.create_new_round()
         self.reset_card_deck()
         self.prepare_players()
-        self.get_current_round().set_new_atut(self.rounds_total, self.card_deck)
+        self.get_current_round().set_new_atut(self.rounds_total,
+                                              self.card_deck,
+                                              self.player_queue)
         print('New Round! [', self.current_round_count, ']', sep='')
         if self.display_mode:
             print('The Atut for this round is: ')

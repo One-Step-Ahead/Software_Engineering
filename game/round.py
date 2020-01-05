@@ -45,21 +45,22 @@ class Round:
         else:
             self.predictions[player] = prediction_value
 
-    def set_atut_manually(self):
+    def set_atut_manually(self, player_q):
+        print('Player', player_q[-1], 'chooses atut now!')
         chosen_card = ask_for_card([ColoredCard(0, 'red'),
                                     ColoredCard(0, 'green'),
                                     ColoredCard(0, 'blue'),
                                     ColoredCard(0, 'yellow')])
         self.atut = chosen_card
 
-    def set_new_atut(self, rounds_total: int, card_deck: list):
+    def set_new_atut(self, rounds_total: int, card_deck: list, player_q):
         if self.round_nr != rounds_total:
             new_atut = choice(card_deck)
             if isinstance(new_atut, ColoredCard):
                 self.atut = new_atut
             elif isinstance(new_atut, SpecialCard):
                 if new_atut.cardType == 'z':
-                    self.set_atut_manually()
+                    self.set_atut_manually(player_q)
                 else:
                     self.atut = None
         else:
