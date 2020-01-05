@@ -1,7 +1,7 @@
 from collections import defaultdict
 from random import choice
 
-from game.cards import ColoredCard, SpecialCard, input_card, Card
+from game.cards import ColoredCard, SpecialCard, ask_for_card, Card
 from game.player import Player
 from game.stich import Stich
 
@@ -46,10 +46,10 @@ class Round:
             self.predictions[player] = prediction_value
 
     def set_atut_manually(self):
-        chosen_card = input_card([ColoredCard(0, 'red'),
-                                  ColoredCard(0, 'green'),
-                                  ColoredCard(0, 'blue'),
-                                  ColoredCard(0, 'yellow')])
+        chosen_card = ask_for_card([ColoredCard(0, 'red'),
+                                    ColoredCard(0, 'green'),
+                                    ColoredCard(0, 'blue'),
+                                    ColoredCard(0, 'yellow')])
         self.atut = chosen_card
 
     def set_new_atut(self, rounds_total: int, card_deck: list):

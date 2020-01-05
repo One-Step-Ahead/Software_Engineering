@@ -1,6 +1,6 @@
 from collections import deque
 
-from game.cards import input_card, ColoredCard
+from game.cards import ask_for_card, ColoredCard
 from game.game_board import Player, Card, SpecialCard
 
 
@@ -122,16 +122,14 @@ class Stich:
         """
         Execute the Stich.
         """
-        correct_input = bool
-        chosen_card = Card
 
         for i in player_queue:
             print("It is now the turn of Player:", i.id)
-            while correct_input:
-                chosen_card = input_card(i.hand)
+            while True:
+                chosen_card = ask_for_card(i.hand)
                 if self.check_if_playable(chosen_card, i):
-                    correct_input = False
+                    break
                 else:
                     print('You are not allowed to play this card right now!')
-            i.play_card(chosen_card, player_queue)
+            i.play_card(chosen_card, self.cards_in_play)
         self.check_stich_winner()

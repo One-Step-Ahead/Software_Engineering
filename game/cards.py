@@ -64,19 +64,14 @@ def create_narr():
     return SpecialCard('n')
 
 
-def input_card(hand: list) -> Card:
+def ask_for_card(hand: list) -> Card:
     """
     Display available Cards
     Prompts player with input request
     Input should be int corresponding to a card from the "hand"
     should return said card
     """
-    position_of_handcard = 1
-    for i in hand:
-        print("Card", position_of_handcard, end='')
-        i.print_card()
-        print(end='  ')
-        position_of_handcard += 1
+    print_handcards(hand)
     while True:
         try:
             selected_card = input('What card do you want to play?')
@@ -89,3 +84,12 @@ def input_card(hand: list) -> Card:
             print('You dont have that many cards')
     selected_card_nr = int(selected_card) - 1
     return hand[selected_card_nr]
+
+
+def print_handcards(hand):
+    position_of_handcard = 1
+    for i in hand:
+        print("Card", position_of_handcard, end='')
+        i.print_card()
+        print(end='  ')
+        position_of_handcard += 1
