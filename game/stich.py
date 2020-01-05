@@ -86,7 +86,12 @@ class Stich:
                 if strongest_card is None:
                     strongest_card = i
                     continue
-                if strongest_card.card_color == self.atut.card_color:
+                if self.atut is None:
+                    if i.card_color == strongest_card.card_color:
+                        if strongest_card.card_value < i.card_value:
+                            strongest_card = i
+                            continue
+                elif strongest_card.card_color == self.atut.card_color:
                     if i.card_color == strongest_card.card_color:
                         if strongest_card.card_value < i.card_value:
                             strongest_card = i
