@@ -89,3 +89,11 @@ class Round:
                 for j in self.stiche[0].player_q:
                     if self.stiche[j] is None:
                         self.stiche[j] = 0
+
+    def print_atut(self, total_rounds: int):
+        if self.atut is None:
+            print("Atut this round: None")
+        elif self.round_nr != total_rounds:
+            print("Atut this round: ", end='')
+            self.atut.print_card()
+            print()

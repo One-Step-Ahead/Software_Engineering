@@ -5,7 +5,7 @@ from game.testing import test
 # Enter all options here:
 
 player_count = 4
-cli_inputs = False
+cli_inputs = True
 
 
 def init(player_total: int):

@@ -47,6 +47,10 @@ class GameBoard:
         self.prepare_players()
         self.get_current_round().set_new_atut(self.rounds_total, self.card_deck)
         print('New Round! [', self.current_round_count, ']', sep='')
+        if self.display_mode:
+            print('The Atut for this round is: ')
+            self.get_current_round().print_atut(self.rounds_total)
+            print()
 
     def set_stich_queue(self, stich_count: int) -> deque:
         stich_queue = deque(self.player_queue)
@@ -77,7 +81,7 @@ class GameBoard:
             self.new_round()
             for j in self.player_queue:
                 self.get_current_round().predict(j)
-            for k in range(1, self.current_round_count):
+            for k in range(1, self.current_round_count + 1):
                 if k == 1:
                     new_stich = Stich(self.player_queue, self.get_current_round().atut)
                 else:
