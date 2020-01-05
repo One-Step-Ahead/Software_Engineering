@@ -54,7 +54,7 @@ class GameBoard:
 
     def set_stich_queue(self, stich_count: int) -> deque:
         stich_queue = deque(self.player_queue)
-        winner = self.get_current_round().stiche[stich_count - 1].winner
+        winner = self.get_current_round().stiche[stich_count - 2].winner
         while winner != stich_queue[0]:
             stich_queue.append(stich_queue.popleft())
         return stich_queue
