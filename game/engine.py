@@ -10,8 +10,9 @@ cli_inputs = True
 
 def init(player_total: int):
     g = GameBoard(player_total, cli_inputs)
-    # g.start_game()
-    test(g)
+    # g.start()
+    g.game_loop()
+    # test(g)
 
 
 init(player_count)

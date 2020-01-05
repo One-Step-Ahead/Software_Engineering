@@ -100,7 +100,7 @@ class GameBoard:
                 if self.display_mode:
                     i.set_name()
 
-    def start_game(self):
+    def start(self):
         self.get_player_names()
         self.game_loop()
 
