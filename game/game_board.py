@@ -9,13 +9,14 @@ from game.stich import Stich
 
 class GameBoard:
     display_mode = None
+    players = None
 
     def __init__(self, player_total: int, _display_mode: bool):
         """
         :param player_total: total ammount of players that are going to play the game
         :param display_mode: True: CLI inputs are on; False: CLI inputs are turned off
         """
-        self.players = create_players(player_total)
+        GameBoard.players = create_players(player_total)
         self.rounds_total = get_rounds_total(player_total)
         self.card_deck = list()
         self.score_board = ScoreBoard()
@@ -30,7 +31,7 @@ class GameBoard:
         self.score_board.round_score.append(Round(self.current_round_count))
 
     def prepare_players(self):
-        for i in self.players:
+        for i in GameBoard.players:
             i.hand.clear()
             i.stich_score = 0
             i.draw_random_card(self.card_deck, self.current_round_count)

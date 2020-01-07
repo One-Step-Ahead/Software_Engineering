@@ -72,6 +72,7 @@ class Round:
             self.atut = None
 
     def calculate_score(self, players: list):
+        from game.game_board import GameBoard
         self.count_win()
         for i in players:
             if isinstance(i, Player):
@@ -82,6 +83,11 @@ class Round:
                 else:
                     difference = abs(prediction - won)
                     i.score -= difference * 10
+        if GameBoard.display_mode:
+            print("*********************************")
+            print("Player score are currently: ")
+            for i in GameBoard.players:
+                print("Player ", i.id, "has a score of: ", i.score)
 
     def count_win(self):
         for i in self.stiche:
