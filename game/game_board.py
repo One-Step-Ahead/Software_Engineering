@@ -1,7 +1,7 @@
 from collections import deque
 
 from game.cards import create_all_cards
-from game.player import *
+from game.player import Player
 from game.round import Round
 from game.score_board import ScoreBoard
 from game.stich import Stich

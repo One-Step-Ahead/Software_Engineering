@@ -1,7 +1,7 @@
 from collections import deque
 
-from game.cards import ask_for_card, ColoredCard
-from game.game_board import Player, Card, SpecialCard
+from game.cards import ask_for_card, ColoredCard, Card, SpecialCard
+from game.player import Player
 
 
 class Stich:
