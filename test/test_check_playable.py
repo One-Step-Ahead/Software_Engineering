@@ -56,7 +56,6 @@ class MyTestCase(unittest.TestCase):
         self.assertFalse(self.s.check_if_playable(self.g.players[2].hand[1], self.g.players[2]))
 
     def test_on_top_of_wizzard(self):
-
         self.s = Stich(self.g.player_queue, ColoredCard(0, "blue"))
 
         hand_p0 = [SpecialCard("z"),
@@ -80,7 +79,6 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(self.s.check_if_playable(self.g.players[2].hand[1], self.g.players[2]))
 
     def test_on_top_of_narr(self):
-
         self.s = Stich(self.g.player_queue, ColoredCard(0, "blue"))
 
         hand_p0 = [SpecialCard("z"),

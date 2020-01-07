@@ -1,6 +1,6 @@
 from random import choice  # Joyce
 
-from game.cards import SpecialCard, Card
+from game.cards import Card
 
 
 class Player:

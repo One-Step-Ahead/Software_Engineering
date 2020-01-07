@@ -66,6 +66,7 @@ class TestStichWinnerAtutNone(TestCase):
     def setUp(self) -> None:
         self.g = GameBoard(4, False)
         self.g.new_round()
+        # noinspection PyTypeChecker
         self.s = Stich(self.g.player_queue, None)
 
     def test_single_atutwin(self):

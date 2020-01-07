@@ -1,5 +1,4 @@
 from game.game_board import GameBoard
-from game.testing import test
 
 # Options
 # Enter all options here:

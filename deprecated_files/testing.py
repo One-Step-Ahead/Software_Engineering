@@ -51,3 +51,7 @@ def print_atut(g: GameBoard):
 
 def make_prediction_test(g: GameBoard):
     g.score_board.make_prediction(g.players[0], 5)
+
+
+if __name__ == '__main__':
+    raise DeprecationWarning
