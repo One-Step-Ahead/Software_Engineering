@@ -8,6 +8,8 @@ from game.stich import Stich
 
 
 class GameBoard:
+    display_mode = None
+
     def __init__(self, player_total: int, display_mode: bool):
         """
         :param player_total: total ammount of players that are going to play the game
@@ -19,7 +21,7 @@ class GameBoard:
         self.score_board = ScoreBoard()
         self.current_round_count = 0
         self.player_queue = deque(self.players)
-        self.display_mode = display_mode
+        display_mode = display_mode
 
     def get_current_round(self) -> Round:
         return self.score_board.round_score[self.current_round_count - 1]
@@ -49,7 +51,7 @@ class GameBoard:
                                               self.card_deck,
                                               self.player_queue)
         print('New Round! [', self.current_round_count, ']', sep='')
-        if self.display_mode:
+        if GameBoard.display_mode:
             print('The Atut for this round is: ')
             self.get_current_round().print_atut(self.rounds_total)
             print()
@@ -97,7 +99,7 @@ class GameBoard:
     def get_player_names(self):
         for i in self.players:
             if isinstance(i, Player):
-                if self.display_mode:
+                if GameBoard.display_mode:
                     i.set_name()
 
     def start(self):

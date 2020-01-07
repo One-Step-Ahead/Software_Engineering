@@ -46,14 +46,19 @@ class Round:
             self.predictions[player] = prediction_value
 
     def set_atut_manually(self, player_q):
+        from game.game_board import GameBoard
         print('Player', player_q[-1], 'chooses atut now!')
-        chosen_card = ask_for_card([ColoredCard(0, 'red'),
-                                    ColoredCard(0, 'green'),
-                                    ColoredCard(0, 'blue'),
-                                    ColoredCard(0, 'yellow')])
-        self.atut = chosen_card
+        if GameBoard.display_mode:
+            chosen_card = ask_for_card([ColoredCard(0, 'red'),
+                                        ColoredCard(0, 'green'),
+                                        ColoredCard(0, 'blue'),
+                                        ColoredCard(0, 'yellow')])
 
-    def set_new_atut(self, rounds_total: int, card_deck: list, player_q):
+            self.atut = chosen_card
+        else:
+            self.atut = ColoredCard(0, 'red')
+
+    def set_new_atut(self, rounds_total: int, card_deck: list, player_q,):
         if self.round_nr != rounds_total:
             new_atut = choice(card_deck)
             if isinstance(new_atut, ColoredCard):
