@@ -123,13 +123,21 @@ class Stich:
         else:
             raise RuntimeError('The system was not able to find a card that won the Stich! Please fix me!')
 
+    def print_cards_in_play(self):
+        for i in self.cards_in_play:
+            i.print_card()
+
     def play(self, player_queue: deque):
         """
         Execute the Stich.
         """
 
         for i in player_queue:
+            print('*************************************')
             print("It is now the turn of Player:", i.id)
+            print("Cards Currently on the board: {", end="")
+            self.print_cards_in_play()
+            print("}")
             while True:
                 chosen_card = ask_for_card(i.hand)
                 if self.check_if_playable(chosen_card, i):
