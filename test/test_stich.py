@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from game.cards import ColoredCard
-from game.game_board import *
+from game.cards import ColoredCard, SpecialCard
+from game.game_board import GameBoard
 from game.stich import Stich
 
 
