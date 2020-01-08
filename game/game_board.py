@@ -102,6 +102,8 @@ class GameBoard:
             if isinstance(i, Player):
                 if GameBoard.display_mode:
                     i.set_name()
+                else:
+                    i.set_random_name()
 
     def start(self):
         self.get_player_names()
