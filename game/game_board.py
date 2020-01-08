@@ -64,15 +64,26 @@ class GameBoard:
             stich_queue.append(stich_queue.popleft())
         return stich_queue
 
-    def get_winner(self) -> Player:
-        winner = Player
+    def get_winner(self) -> list:
+        winners = []
+        current_highscore = int()
         for i in self.players:
-            if winner is Player:
-                winner = i
             if isinstance(i, Player):
-                if i.score > winner.score:
-                    winner = i
-        return winner
+                if i.score > current_highscore:
+                    current_highscore = i.score
+        for i in self.players:
+            if isinstance(i, Player):
+                if i.score == current_highscore:
+                    winners.append(i)
+        return winners
+        # winner = []
+        # for i in self.players:
+        #     if winner is Player:
+        #         winner = i
+        #     if isinstance(i, Player):
+        #         if i.score > winner.score:
+        #             winner = i
+        # return winner
 
     def complete_game(self):
         winner = self.get_winner()
