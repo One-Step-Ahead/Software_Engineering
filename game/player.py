@@ -1,9 +1,19 @@
-from random import choice  # Joyce
+from random import choice, randint  # Joyce
 
 from game.cards import Card
 
 
 class Player:
+    names = ['Sebastian',
+             'Johannes',
+             'Gerald',
+             'Max',
+             'Moritz',
+             'Lisa',
+             'Katharina',
+             'Sandra',
+             'Verena',
+             'Sabrina']
 
     def __init__(self, player_number: int, name=None):
         self.id = player_number
@@ -30,3 +40,9 @@ class Player:
             print('Enter Player name for Player', self.id + 1, ':')
             name = input()
         self.name = name
+
+    def set_random_name(self):
+        self.name = Player.names.pop(randint(0, (len(Player.names) - 1)))
+        from game.game_board import GameBoard
+        if GameBoard.display_mode:
+            print("Player ", self.id, " is now named ", self.name)
