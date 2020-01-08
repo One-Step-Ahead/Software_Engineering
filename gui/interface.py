@@ -394,6 +394,18 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.P1_cards = [self.P1_Card_0, self.P1_Card_1, self.P1_Card_2, self.P1_Card_3, self.P1_Card_4, self.P1_Card_5,
+                         self.P1_Card_6, self.P1_Card_7, self.P1_Card_8, self.P1_Card_9, self.P1_Card_10,
+                         self.P1_Card_11, self.P1_Card_12, self.P1_Card_13, self.P1_Card_14]
+        self.P2_cards = [self.P2_Card_0, self.P2_Card_1, self.P2_Card_2, self.P2_Card_3, self.P2_Card_4, self.P2_Card_5,
+                         self.P2_Card_6, self.P2_Card_7, self.P2_Card_8, self.P2_Card_9, self.P2_Card_10,
+                         self.P2_Card_11, self.P2_Card_12, self.P2_Card_13, self.P2_Card_14]
+        self.P3_cards = [self.P3_Card_0, self.P3_Card_1, self.P3_Card_2, self.P3_Card_3, self.P3_Card_4, self.P3_Card_5,
+                         self.P3_Card_6, self.P3_Card_7, self.P3_Card_8, self.P3_Card_9, self.P3_Card_10,
+                         self.P3_Card_11, self.P3_Card_12, self.P3_Card_13, self.P3_Card_14]
+        self.P4_cards = [self.P4_Card_0, self.P4_Card_1, self.P4_Card_2, self.P4_Card_3, self.P4_Card_4, self.P4_Card_5,
+                         self.P4_Card_6, self.P4_Card_7, self.P4_Card_8, self.P4_Card_9, self.P4_Card_10,
+                         self.P4_Card_11, self.P4_Card_12, self.P4_Card_13, self.P4_Card_14]
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
