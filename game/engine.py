@@ -5,6 +5,7 @@ from game.game_board import GameBoard
 
 player_count = 4
 cli_inputs = True
+use_gui = False
 
 
 def init(player_total: int):
