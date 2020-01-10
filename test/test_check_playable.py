@@ -101,7 +101,7 @@ class MyTestCase(unittest.TestCase):
 
         self.assertTrue(self.s.check_if_playable(self.g.players[2].hand[1], self.g.players[2]))
 
-    def test_play_narr(self):
+    def test_not_play_narr(self):
         self.s = Stich(self.g.player_queue, ColoredCard(7, "blue"))
 
         hand_p0 = [ColoredCard(3, "red"),
