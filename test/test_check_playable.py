@@ -100,3 +100,34 @@ class MyTestCase(unittest.TestCase):
         self.s.cards_in_play.extend(cards_in_play)
 
         self.assertTrue(self.s.check_if_playable(self.g.players[2].hand[1], self.g.players[2]))
+
+    def test_play_narr(self):
+        self.s = Stich(self.g.player_queue, ColoredCard(7, "blue"))
+
+        hand_p0 = [ColoredCard(3, "red"),
+                   ColoredCard(8, "green"),
+                   ColoredCard(9, "red"),
+                   ColoredCard(11, "yellow")]
+        hand_p1 = [ColoredCard(6, "blue"),
+                   ColoredCard(10, "blue"),
+                   ColoredCard(4, "red"),
+                   ColoredCard(11, "red")]
+        hand_p2 = [ColoredCard(13, "red"),
+                   ColoredCard(2, "red"),
+                   ColoredCard(8, "yellow")]
+        hand_p3 = [SpecialCard("n"),
+                   ColoredCard(6, "green"),
+                   ColoredCard(2, "green"),
+                   ColoredCard(4, "green"),
+                   SpecialCard("n")]
+        cards_in_play = [ColoredCard(12, "yellow"),
+                         ColoredCard(3, "blue"),
+                         SpecialCard("z")]
+
+        self.g.players[0].hand.extend(hand_p0)
+        self.g.players[1].hand.extend(hand_p1)
+        self.g.players[2].hand.extend(hand_p2)
+        self.g.players[3].hand.extend(hand_p3)
+        self.s.cards_in_play.extend(cards_in_play)
+
+        self.assertTrue(self.s.check_if_playable(self.g.players[3].hand[3], self.g.players[3]))
