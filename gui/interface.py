@@ -277,16 +277,3 @@ class Ui_MainWindow(object):
         self.menuMenue.setTitle(_translate("MainWindow", "New Game"))
         self.menuRules.setTitle(_translate("MainWindow", "Rules"))
         self.menuSetup.setTitle(_translate("MainWindow", "Setup"))
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-
-    # TODO Pycharm pro gönnen #gönnung

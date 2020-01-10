@@ -1,5 +1,6 @@
 from game.game_board import GameBoard
-from gui.connect import gui_connect
+from gui.connect import Core
+
 
 # Options
 # Enter all options here:
@@ -17,7 +18,7 @@ def init():
     global g
     g = GameBoard(player_count, cli_inputs)
     if use_gui:
-        gui_connect()
+        core = Core(g)
     else:
         g.start()
 
