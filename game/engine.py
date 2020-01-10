@@ -13,9 +13,9 @@ use_gui = True
 g = GameBoard
 
 
-def init(player_total: int):
+def init():
     global g
-    g = GameBoard(player_total, cli_inputs)
+    g = GameBoard(player_count, cli_inputs)
     if use_gui:
         gui_connect()
     else:
@@ -25,4 +25,4 @@ def init(player_total: int):
     # test(g)
 
 
-init(player_count)
+init()
