@@ -89,7 +89,7 @@ class GameBoard:
                 won.append(i.name + " ")
             while len(won) != 4:
                 won.append(" ")
-            print("Congratulations {}{}{}{}you managed to come out on top!".format(won[0], won[1], won[3], won[4]))
+            print("Congratulations {}{}{}{}you managed to come out on top!".format(won[0], won[1], won[2], won[3]))
 
     def game_loop(self):
         for i in range(0, self.rounds_total):
