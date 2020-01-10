@@ -11,16 +11,20 @@ from PyQt5 import QtCore, QtWidgets, QtGui
 
 
 class Ui_MainWindow(object):
+    """
+    folgend werden die funktionen definiert welche durch buttonclicks ausgeführt werden
+    was sollen die knöpfe machen?
+    "cards" sollen
+        1.Die Karten der jeweiligen Spielerhand anzeigen und
+        2.Auf Clicken versuchen diese Karte zu spielen
 
-    #folgend werden die funktionen definiert welche durch buttonclicks ausgeführt werden
-    #was sollen die knöpfe machen?
-    #"cards" sollen
-        #1.Die Karten der jeweiligen Spielerhand anzeigen und
-        #2.Auf Clicken versuchen diese Karte zu spielen
+    Last_Card_Played
+    soll dann die geklickte/gespielte karte anzeigen
 
-    #Last_Card_Played
-    #soll dann die geklickte/gespielte karte anzeigen
-
+    def update_scoreboard(self):
+        current_time= str(datetime.datetime.now().time())
+        ui.label.setText(current_time)
+    """
 
     def clicked_card_0(self):
         print("This is Card 1")
@@ -72,8 +76,6 @@ class Ui_MainWindow(object):
 
     def clicked_aktuelle_stiche(self):
         print("aktuelle stiche")
-
-
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -288,5 +290,6 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
 
     # TODO Pycharm pro gönnen #gönnung
