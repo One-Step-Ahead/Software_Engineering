@@ -43,7 +43,7 @@ class Stich:
         """
         if len(self.cards_in_play) == 0:
             return True
-        elif type(chosen_card) is type(SpecialCard):
+        elif type(chosen_card) is SpecialCard:
             return True
         elif self.cant_serve(player):
             return True
