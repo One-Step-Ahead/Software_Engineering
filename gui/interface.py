@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
 
     def clicked_card_1(self):
         print("This is Card 2")
-        self.Card_1.setIcon(QtGui.QIcon('')) #dateipfad einfügen
+        self.Card_1.setIcon(QtGui.QIcon(''))  # dateipfad einfügen
 
     def clicked_card_2(self):
         print("This is Card 3")
@@ -259,7 +259,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Learning Wizard"))
+
         self.Textausgabe.setText(_translate("MainWindow", "spieler x hat karte y gespielt"))
+
         self.Punktetabelle.setText(_translate("MainWindow", "Score: \n"
                                                             " Player 1: \n"
                                                             " \n"
@@ -269,15 +271,22 @@ class Ui_MainWindow(object):
                                                             " \n"
                                                             " Player 4: \n"
                                                             " "))
+
         self.Aktuelle_Stiche.setText(_translate("MainWindow", "Player 1: __ Player2:__  Player3: __ Player4: __"))
+
         self.Rundendisplay.setText(_translate("MainWindow", "Aktuelle Runde: \n"
                                                             " \n"
                                                             " Aktueller Stich:\n"
                                                             ""))
+
         self.yours_handcards.setText(_translate("MainWindow", "Your Handcards"))
+
         self.title.setText(_translate("MainWindow", "LeWi 1.0"))
+
         self.menuMenue.setTitle(_translate("MainWindow", "New Game"))
+
         self.menuRules.setTitle(_translate("MainWindow", "Rules"))
+
         self.menuSetup.setTitle(_translate("MainWindow", "Setup"))
 
 
@@ -290,6 +299,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-
-    # TODO Pycharm pro gönnen #gönnung
