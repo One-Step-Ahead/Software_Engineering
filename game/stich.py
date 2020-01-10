@@ -17,9 +17,8 @@ class Stich:
         """
         first_played_card = self.cards_in_play[0]
 
-        if isinstance(card_about_to_be_played, SpecialCard):
-            return True
-        elif isinstance(card_about_to_be_played, ColoredCard) and isinstance(first_played_card, ColoredCard):
+        if isinstance(first_played_card, ColoredCard):
+            card_about_to_be_played: ColoredCard
             if card_about_to_be_played.card_color == first_played_card.card_color:
                 return True
         else:
@@ -30,6 +29,8 @@ class Stich:
         If the player has no cards that allow him to serve the color on the board :return True.
         """
         for i in player.hand:
+            if isinstance(i, SpecialCard):
+                continue
             if self.farbzwang_check(i):
                 return False
         return True
@@ -43,7 +44,7 @@ class Stich:
         """
         if len(self.cards_in_play) == 0:
             return True
-        elif type(chosen_card) is type(SpecialCard):
+        elif type(chosen_card) is SpecialCard:
             return True
         elif self.cant_serve(player):
             return True
