@@ -8,11 +8,17 @@ cli_inputs = True
 use_gui = False
 
 
-def init(player_total: int):
-    g = GameBoard(player_total, cli_inputs)
+def init():
+    global g
+    g = GameBoard(player_count, cli_inputs)
+    if use_gui:
+        # gui_connect()
+        pass
+    else:
+        g.game_loop()
+
     # g.start()
-    g.game_loop()
     # test(g)
 
 
-init(player_count)
+init()
