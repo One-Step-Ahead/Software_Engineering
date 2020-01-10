@@ -1,4 +1,5 @@
 from collections import deque
+from typing import List
 
 from game.cards import create_all_cards
 from game.player import Player
@@ -76,21 +77,19 @@ class GameBoard:
                 if i.score == current_highscore:
                     winners.append(i)
         return winners
-        # winner = []
-        # for i in self.players:
-        #     if winner is Player:
-        #         winner = i
-        #     if isinstance(i, Player):
-        #         if i.score > winner.score:
-        #             winner = i
-        # return winner
 
     def complete_game(self):
-        winner = self.get_winner()
-        if winner.name is None:
-            print('Winner of the game is:', winner.id + 1)
+        winners = self.get_winner()
+        winners: List[Player]
+        if len(winners) == 1:
+            print("Congratulations" + winners[0].name + "you are victorious!")
         else:
-            print('Winner of the game is:', winner.name)
+            won = []
+            for i in winners:
+                won.append(i.name + " ")
+            while len(won) != 4:
+                won.append(" ")
+            print("Congratulations {}{}{}{}you managed to come out on top!".format(won[0], won[1], won[3], won[4]))
 
     def game_loop(self):
         for i in range(0, self.rounds_total):
