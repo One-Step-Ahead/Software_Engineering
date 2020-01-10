@@ -75,7 +75,7 @@ def ask_for_card(hand: list) -> Card:
     while True:
         try:
             selected_card = input('What card do you want to play?')
-            if int(selected_card) < 0:
+            if int(selected_card) < 0 or int(selected_card) > len(hand):
                 raise ValueError
             break
         except ValueError:
