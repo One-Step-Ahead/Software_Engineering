@@ -6,6 +6,9 @@ class Card:
         print("[None]", end='')
         pass
 
+    def to_string(self):
+        pass
+
 
 class ColoredCard(Card):
 
@@ -18,6 +21,9 @@ class ColoredCard(Card):
         print('[', self.card_color, sep='', end='|')
         print(self.card_value, end=']')
 
+    def to_string(self) -> str:
+        return "{}|{}".format(self.card_color, self.card_value)
+
 
 class SpecialCard(Card):
 
@@ -27,6 +33,9 @@ class SpecialCard(Card):
 
     def print_card(self):
         print('[', self.cardType, sep='', end=']')
+
+    def to_string(self):
+        return "{}".format(self.cardType)
 
 
 def create_all_cards():
@@ -75,7 +84,7 @@ def ask_for_card(hand: list) -> Card:
     while True:
         try:
             selected_card = input('What card do you want to play?')
-            if int(selected_card) < 0:
+            if int(selected_card) < 0 or int(selected_card) > len(hand):
                 raise ValueError
             break
         except ValueError:
