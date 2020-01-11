@@ -27,12 +27,12 @@ class Round:
         while True:
             try:
                 input_value = int(input())
-                if input_value <= self.round_nr:
+                if self.round_nr >= input_value >= 0:
                     return input_value
                 else:
-                    continue
+                    raise ValueError
             except ValueError:
-                print('Please input a Number! How many "Stiche" will you win?')
+                print('Please input a whole Number! How many "Stiche" will you win?')
 
     def predict(self, player: Player, prediction=None):
         if prediction is None:
