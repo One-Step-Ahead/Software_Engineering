@@ -18,7 +18,7 @@ class Round:
         self.score_result = dict()
 
     def input_prediction(self, player: Player) -> int:
-        print('Player No.:', player.id, 'how many "Stiche" will you win?')
+        print('Player No.:', player.number, 'how many "Stiche" will you win?')
         print('Cards currently in your hand: ')
         for i in player.hand:
             if isinstance(i, Card):
@@ -27,12 +27,12 @@ class Round:
         while True:
             try:
                 input_value = int(input())
-                if input_value <= self.round_nr:
+                if self.round_nr >= input_value >= 0:
                     return input_value
                 else:
-                    continue
+                    raise ValueError
             except ValueError:
-                print('Please input a Number! How many "Stiche" will you win?')
+                print('Please input a whole Number! How many "Stiche" will you win?')
 
     def predict(self, player: Player, prediction=None):
         if prediction is None:
@@ -47,7 +47,7 @@ class Round:
 
     def set_atut_manually(self, player_q):
         from game.game_board import GameBoard
-        print('Player', player_q[-1], 'chooses atut now!')
+        print('Player', player_q[-1].number, 'chooses atut now!')
         if GameBoard.display_mode:
             chosen_card = ask_for_card([ColoredCard(0, 'red'),
                                         ColoredCard(0, 'green'),
@@ -87,7 +87,7 @@ class Round:
             print("*********************************")
             print("Player score are currently: ")
             for i in GameBoard.players:
-                print("Player ", i.id, "has a score of: ", i.score)
+                print("Player ", i.number, "has a score of: ", i.score)
 
     def count_win(self):
         for i in self.stiche:

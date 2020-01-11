@@ -35,7 +35,7 @@ def test_number_of_players(players: list):
 
 
 def check_player_hand_cards(player: Player):
-    print('Player:', player.id, 'Number of cards in hand:', len(player.hand))
+    print('Player:', player.number, 'Number of cards in hand:', len(player.hand))
     for i in player.hand:
         i.print_card()
 

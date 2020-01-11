@@ -3,7 +3,7 @@ from game.game_board import GameBoard
 # Options
 # Enter all options here:
 
-player_count = 4
+player_count = 6
 cli_inputs = True
 use_gui = False
 

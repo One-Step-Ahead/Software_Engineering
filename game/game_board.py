@@ -61,8 +61,8 @@ class GameBoard:
     def set_stich_queue(self, stich_count: int) -> deque:
         stich_queue = deque(self.player_queue)
         winner = self.get_current_round().stiche[stich_count - 2].winner
-        while winner != stich_queue[0]:
-            stich_queue.append(stich_queue.popleft())
+        while winner is not stich_queue[0]:
+            stich_queue.rotate(-1)
         return stich_queue
 
     def get_winner(self) -> list:
@@ -90,6 +90,8 @@ class GameBoard:
             while len(won) != 4:
                 won.append(" ")
             print("Congratulations {}{}{}{}you managed to come out on top!".format(won[0], won[1], won[2], won[3]))
+            print("The game has ended now. Press enter to exit...")
+            input()
 
     def game_loop(self):
         for i in range(0, self.rounds_total):
@@ -102,7 +104,7 @@ class GameBoard:
                 else:
                     new_stich = Stich(self.set_stich_queue(k), self.get_current_round().atut)
                 self.get_current_round().stiche.append(new_stich)
-                new_stich.play(self.player_queue)
+                new_stich.play()
             self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
         self.complete_game()

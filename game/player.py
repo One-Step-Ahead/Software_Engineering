@@ -16,7 +16,7 @@ class Player:
              'Sabrina']
 
     def __init__(self, player_number: int, name=None):
-        self.id = player_number
+        self.number = player_number + 1
         self.score = int(0)
         self.hand = list()
         self.name = name
@@ -37,7 +37,7 @@ class Player:
 
     def set_name(self, name='player'):
         if name == 'player':
-            print('Enter Player name for Player', self.id + 1, ':')
+            print('Enter Player name for Player', self.number + 1, ':')
             name = input()
         self.name = name
 
@@ -45,4 +45,4 @@ class Player:
         self.name = Player.names.pop(randint(0, (len(Player.names) - 1)))
         from game.game_board import GameBoard
         if GameBoard.display_mode:
-            print("Player ", self.id, " is now named ", self.name)
+            print("Player ", self.number, " is now named ", self.name)
