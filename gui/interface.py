@@ -26,53 +26,9 @@ class Ui_MainWindow(object):
         ui.label.setText(current_time)
     """
 
-    def clicked_card_0(self):
-        print("This is Card 1")
+    def clicked_card(self, card_nr: int):
+        print("This is Card {}".format(card_nr + 1))
         self.Card_2.setIcon(QtGui.QIcon(''))
-
-    def clicked_card_1(self):
-        print("This is Card 2")
-        self.Card_1.setIcon(QtGui.QIcon(''))  # dateipfad einfügen
-
-    def clicked_card_2(self):
-        print("This is Card 3")
-        self.Card_2.setIcon(QtGui.QIcon(''))
-
-    def clicked_card_3(self):
-        print("This is Card 4")
-
-    def clicked_card_4(self):
-        print("This is Card 5")
-
-    def clicked_card_5(self):
-        print("This is Card 6")
-
-    def clicked_card_6(self):
-        print("This is Card 7")
-
-    def clicked_card_7(self):
-        print("This is Card 8")
-
-    def clicked_card_8(self):
-        print("This is Card 9")
-
-    def clicked_card_9(self):
-        print("This is Card 10")
-
-    def clicked_card_10(self):
-        print("This is Card 11")
-
-    def clicked_card_11(self):
-        print("This is Card 12")
-
-    def clicked_card_12(self):
-        print("This is Card 13")
-
-    def clicked_card_13(self):
-        print("This is Card 14")
-
-    def clicked_card_14(self):
-        print("This is Card 15")
 
     def clicked_aktuelle_stiche(self):
         print("aktuelle stiche")
@@ -148,91 +104,91 @@ class Ui_MainWindow(object):
         self.Card_0.setGeometry(QtCore.QRect(280, 490, 81, 121))
         self.Card_0.setText("")
         self.Card_0.setObjectName("Card_0")
-        self.Card_0.clicked.connect(self.clicked_card_0)
+        self.Card_0.clicked.connect(lambda: self.clicked_card(0))
 
         self.Card_1 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_1.setGeometry(QtCore.QRect(360, 490, 81, 121))
         self.Card_1.setText("")
         self.Card_1.setObjectName("Card_1")
-        self.Card_1.clicked.connect(self.clicked_card_1)
+        self.Card_1.clicked.connect(lambda: self.clicked_card(1))
 
         self.Card_2 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_2.setGeometry(QtCore.QRect(440, 490, 81, 121))
         self.Card_2.setText("")
         self.Card_2.setObjectName("Card_2")
-        self.Card_2.clicked.connect(self.clicked_card_2)
+        self.Card_2.clicked.connect(lambda: self.clicked_card(2))
 
         self.Card_3 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_3.setGeometry(QtCore.QRect(520, 490, 81, 121))
         self.Card_3.setText("")
         self.Card_3.setObjectName("Card_3")
-        self.Card_3.clicked.connect(self.clicked_card_3)
+        self.Card_3.clicked.connect(lambda: self.clicked_card(3))
 
         self.Card_4 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_4.setGeometry(QtCore.QRect(600, 490, 81, 121))
         self.Card_4.setText("")
         self.Card_4.setObjectName("Card_4")
-        self.Card_4.clicked.connect(self.clicked_card_4)
+        self.Card_4.clicked.connect(lambda: self.clicked_card(4))
 
         self.Card_5 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_5.setGeometry(QtCore.QRect(680, 490, 81, 121))
         self.Card_5.setText("")
         self.Card_5.setObjectName("Card_5")
-        self.Card_5.clicked.connect(self.clicked_card_5)
+        self.Card_5.clicked.connect(lambda: self.clicked_card(5))
 
         self.Card_6 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_6.setGeometry(QtCore.QRect(760, 490, 81, 121))
         self.Card_6.setText("")
         self.Card_6.setObjectName("Card_6")
-        self.Card_6.clicked.connect(self.clicked_card_6)
+        self.Card_6.clicked.connect(lambda: self.clicked_card(6))
 
         self.Card_7 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_7.setGeometry(QtCore.QRect(240, 620, 81, 121))
         self.Card_7.setText("")
         self.Card_7.setObjectName("Card_7")
-        self.Card_7.clicked.connect(self.clicked_card_7)
+        self.Card_7.clicked.connect(lambda: self.clicked_card(7))
 
         self.Card_8 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_8.setGeometry(QtCore.QRect(320, 620, 81, 121))
         self.Card_8.setText("")
         self.Card_8.setObjectName("Card_8")
-        self.Card_8.clicked.connect(self.clicked_card_8)
+        self.Card_8.clicked.connect(lambda: self.clicked_card(8))
 
         self.Card_9 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_9.setGeometry(QtCore.QRect(400, 620, 81, 121))
         self.Card_9.setText("")
         self.Card_9.setObjectName("Card_9")
-        self.Card_9.clicked.connect(self.clicked_card_9)
+        self.Card_9.clicked.connect(lambda: self.clicked_card(9))
 
         self.Card_10 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_10.setGeometry(QtCore.QRect(480, 620, 81, 121))
         self.Card_10.setText("")
         self.Card_10.setObjectName("Card_10")
-        self.Card_10.clicked.connect(self.clicked_card_10)
+        self.Card_10.clicked.connect(lambda: self.clicked_card(10))
 
         self.Card_11 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_11.setGeometry(QtCore.QRect(560, 620, 81, 121))
         self.Card_11.setText("")
         self.Card_11.setObjectName("Card_11")
-        self.Card_11.clicked.connect(self.clicked_card_11)
+        self.Card_11.clicked.connect(lambda: self.clicked_card(11))
 
         self.Card_12 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_12.setGeometry(QtCore.QRect(640, 620, 81, 121))
         self.Card_12.setText("")
         self.Card_12.setObjectName("Card_12")
-        self.Card_12.clicked.connect(self.clicked_card_12)
+        self.Card_12.clicked.connect(lambda: self.clicked_card(12))
 
         self.Card_13 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_13.setGeometry(QtCore.QRect(720, 620, 81, 121))
         self.Card_13.setText("")
         self.Card_13.setObjectName("Card_13")
-        self.Card_13.clicked.connect(self.clicked_card_13)
+        self.Card_13.clicked.connect(lambda: self.clicked_card(13))
 
         self.Card_14 = QtWidgets.QPushButton(self.centralwidget)
         self.Card_14.setGeometry(QtCore.QRect(800, 620, 81, 121))
         self.Card_14.setText("")
         self.Card_14.setObjectName("Card_14")
-        self.Card_14.clicked.connect(self.clicked_card_14)
+        self.Card_14.clicked.connect(lambda: self.clicked_card(14))
 
         self.yours_handcards = QtWidgets.QLabel(self.centralwidget)
         self.yours_handcards.setGeometry(QtCore.QRect(290, 442, 331, 31))
