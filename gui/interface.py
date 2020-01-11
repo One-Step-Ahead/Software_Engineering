@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
 
     def clicked_card_1(self):
         print("This is Card 2")
-        self.Card_1.setIcon(QtGui.QIcon('')) #dateipfad einfügen
+        self.Card_1.setIcon(QtGui.QIcon(''))  # dateipfad einfügen
 
     def clicked_card_2(self):
         print("This is Card 3")
@@ -77,6 +77,23 @@ class Ui_MainWindow(object):
     def clicked_aktuelle_stiche(self):
         print("aktuelle stiche")
 
+    def update_scoreboard(self, p1=0, p2=0, p3=90, p4=0):
+        a = str(p1)
+        b = str(p2)
+        c = str(p3)
+        d = str(p4)
+
+        text = (("MainWindow", "Score: \n"
+                               " Player 1: \n"
+                               " {}\n"
+                               " Player 2: \n"
+                               " {}\n"
+                               " Player 3: \n"
+                               " {}\n"
+                               " Player 4: \n"
+                               " {}\n".format(a, b, c, d)))
+        self.Scoreboard.setText(text)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
@@ -108,13 +125,15 @@ class Ui_MainWindow(object):
         self.P2_Last_Played.setText("")
         self.P2_Last_Played.setObjectName("P2_Last_Played")
 
-        self.Textausgabe = QtWidgets.QLabel(self.centralwidget)
+        self.Textausgabe = QtWidgets.QTextEdit(self.centralwidget)
+        self.Textausgabe.setReadOnly(True)
+        self.Textausgabe.lineWrapMode()
         self.Textausgabe.setGeometry(QtCore.QRect(370, 770, 471, 71))
         self.Textausgabe.setObjectName("Textausgabe")
 
-        self.Punktetabelle = QtWidgets.QLabel(self.centralwidget)
-        self.Punktetabelle.setGeometry(QtCore.QRect(890, 10, 211, 271))
-        self.Punktetabelle.setObjectName("Punktetabelle")
+        self.Scoreboard = QtWidgets.QLabel(self.centralwidget)
+        self.Scoreboard.setGeometry(QtCore.QRect(890, 10, 211, 271))
+        self.Scoreboard.setObjectName("Punktetabelle")
 
         self.Aktuelle_Stiche = QtWidgets.QPushButton(self.centralwidget)
         self.Aktuelle_Stiche.setGeometry(QtCore.QRect(40, 790, 281, 51))
@@ -259,23 +278,36 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Learning Wizard"))
+
         self.Textausgabe.setText(_translate("MainWindow", "spieler x hat karte y gespielt"))
-        self.Punktetabelle.setText(_translate("MainWindow", "Score: \n"
+
+        a = str(0)
+        b = str(0)
+        c = str(0)
+        d = str(0)
+        self.Scoreboard.setText(_translate("MainWindow", "Score: \n"
                                                             " Player 1: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 2: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 3: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 4: \n"
-                                                            " "))
+                                                            " {}\n".format(a, b, c, d)))
+
         self.Aktuelle_Stiche.setText(_translate("MainWindow", "Player 1: __ Player2:__  Player3: __ Player4: __"))
-        self.Rundendisplay.setText(_translate("MainWindow", "Aktuelle Runde: \n"
+
+        self.Rundendisplay.setText(_translate("MainWindow", "Current Round: \n"
                                                             " \n"
-                                                            " Aktueller Stich:\n"
+                                                            " Current Stich:\n"
                                                             ""))
+
         self.yours_handcards.setText(_translate("MainWindow", "Your Handcards"))
+
         self.title.setText(_translate("MainWindow", "LeWi 1.0"))
+
         self.menuMenue.setTitle(_translate("MainWindow", "New Game"))
+
         self.menuRules.setTitle(_translate("MainWindow", "Rules"))
+
         self.menuSetup.setTitle(_translate("MainWindow", "Setup"))
