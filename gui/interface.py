@@ -77,6 +77,23 @@ class Ui_MainWindow(object):
     def clicked_aktuelle_stiche(self):
         print("aktuelle stiche")
 
+    def update_scoreboard(self, p1=0, p2=0, p3=90, p4=0):
+        a = str(p1)
+        b = str(p2)
+        c = str(p3)
+        d = str(p4)
+
+        text = (("MainWindow", "Score: \n"
+                               " Player 1: \n"
+                               " {}\n"
+                               " Player 2: \n"
+                               " {}\n"
+                               " Player 3: \n"
+                               " {}\n"
+                               " Player 4: \n"
+                               " {}\n".format(a, b, c, d)))
+        self.Scoreboard.setText(text)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
@@ -112,9 +129,9 @@ class Ui_MainWindow(object):
         self.Textausgabe.setGeometry(QtCore.QRect(370, 770, 471, 71))
         self.Textausgabe.setObjectName("Textausgabe")
 
-        self.Punktetabelle = QtWidgets.QLabel(self.centralwidget)
-        self.Punktetabelle.setGeometry(QtCore.QRect(890, 10, 211, 271))
-        self.Punktetabelle.setObjectName("Punktetabelle")
+        self.Scoreboard = QtWidgets.QLabel(self.centralwidget)
+        self.Scoreboard.setGeometry(QtCore.QRect(890, 10, 211, 271))
+        self.Scoreboard.setObjectName("Punktetabelle")
 
         self.Aktuelle_Stiche = QtWidgets.QPushButton(self.centralwidget)
         self.Aktuelle_Stiche.setGeometry(QtCore.QRect(40, 790, 281, 51))
@@ -262,15 +279,16 @@ class Ui_MainWindow(object):
 
         self.Textausgabe.setText(_translate("MainWindow", "spieler x hat karte y gespielt"))
 
-        self.Punktetabelle.setText(_translate("MainWindow", "Score: \n"
+        a, b, c, d = str(0)
+        self.Scoreboard.setText(_translate("MainWindow", "Score: \n"
                                                             " Player 1: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 2: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 3: \n"
-                                                            " \n"
+                                                            " {}\n"
                                                             " Player 4: \n"
-                                                            " "))
+                                                            " {}\n".format(a, b, c, d)))
 
         self.Aktuelle_Stiche.setText(_translate("MainWindow", "Player 1: __ Player2:__  Player3: __ Player4: __"))
 
