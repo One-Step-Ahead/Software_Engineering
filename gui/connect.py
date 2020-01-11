@@ -2,7 +2,8 @@ from typing import List
 
 from game.game_board import GameBoard
 from game.player import Player
-from game.cards import SpecialCard, ColoredCard, Card
+from game.cards import Card
+from game.stich import Stich
 
 from gui.interface import *
 
@@ -52,9 +53,28 @@ class Core:
         self.g = gameboard
         self.i = Interface()
 
+    def play_card(self):
+        pass
+
+    def play_stich(self, stich: Stich):
+        """
+        Exectues the logic of a stich combined with the interface.
+        :param stich: Stich should be played
+        """
+        for i in stich.player_q:
+            i: Player
+            # todo print out the player that is now playing
+            self.i.set_player_cards_string(i)
+            # todo warten daruaf, dass die Karte gespielt wird
+            # check_if_playable()
+            # i.play_card()
+
+
     def run(self):
         """
         This runs the gameloop. Every step major game phase is initiated here.
+        This function is similar to the game_loop() function
+        but run() is integrated into the interface.
         """
         for i in range(0, self.g.rounds_total):
             self.g.new_round()
@@ -62,3 +82,10 @@ class Core:
             for j in self.g.player_queue:
                 self.i.set_player_cards_string(j)
                 self.g.get_current_round().predict(j)
+            for k in range(1, self.g.current_round_count + 1):
+                if k == 1:
+                    new_stich = Stich(self.g.player_queue, self.g.get_current_round().atut)
+                else:
+                    new_stich = Stich(self.g.set_stich_queue(k), self.g.get_current_round().atut)
+                self.g.get_current_round().stiche.append(new_stich)
+                self.play_stich(new_stich)
