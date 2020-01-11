@@ -18,7 +18,7 @@ class Round:
         self.score_result = dict()
 
     def input_prediction(self, player: Player) -> int:
-        print('Player No.:', player.id, 'how many "Stiche" will you win?')
+        print('Player No.:', player.number, 'how many "Stiche" will you win?')
         print('Cards currently in your hand: ')
         for i in player.hand:
             if isinstance(i, Card):
