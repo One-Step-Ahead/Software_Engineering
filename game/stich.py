@@ -134,8 +134,9 @@ class Stich:
         """
 
         for i in self.player_q:
+            i: Player
             print('*************************************')
-            print("It is now the turn of Player:", i.id)
+            print("It is now the turn of Player:", i.number)
             print("Cards Currently on the board: {", end="")
             self.print_cards_in_play()
             print("}")

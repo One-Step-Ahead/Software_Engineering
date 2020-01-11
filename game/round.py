@@ -87,7 +87,7 @@ class Round:
             print("*********************************")
             print("Player score are currently: ")
             for i in GameBoard.players:
-                print("Player ", i.id, "has a score of: ", i.score)
+                print("Player ", i.number, "has a score of: ", i.score)
 
     def count_win(self):
         for i in self.stiche:
