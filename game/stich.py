@@ -5,7 +5,7 @@ from game.player import Player
 
 
 class Stich:
-    def __init__(self, player_q: deque, atut: ColoredCard):
+    def __init__(self, player_q: deque, atut=ColoredCard(1, "red")):
         self.player_q = player_q
         self.cards_in_play = list()
         self.winner = Player
@@ -128,12 +128,12 @@ class Stich:
         for i in self.cards_in_play:
             i.print_card()
 
-    def play(self, player_queue: deque):
+    def play(self):
         """
         Execute the Stich.
         """
 
-        for i in player_queue:
+        for i in self.player_q:
             print('*************************************')
             print("It is now the turn of Player:", i.id)
             print("Cards Currently on the board: {", end="")

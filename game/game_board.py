@@ -62,7 +62,7 @@ class GameBoard:
         stich_queue = deque(self.player_queue)
         winner = self.get_current_round().stiche[stich_count - 2].winner
         while winner is not stich_queue[0]:
-            stich_queue.append(stich_queue.popleft())
+            stich_queue.rotate(-1)
         return stich_queue
 
     def get_winner(self) -> list:
@@ -102,7 +102,7 @@ class GameBoard:
                 else:
                     new_stich = Stich(self.set_stich_queue(k), self.get_current_round().atut)
                 self.get_current_round().stiche.append(new_stich)
-                new_stich.play(self.player_queue)
+                new_stich.play()
             self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
         self.complete_game()
