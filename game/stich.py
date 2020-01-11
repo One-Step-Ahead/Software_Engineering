@@ -5,7 +5,7 @@ from game.player import Player
 
 
 class Stich:
-    def __init__(self, player_q: deque, atut: ColoredCard):
+    def __init__(self, player_q: deque, atut=ColoredCard(1, "red")):
         self.player_q = player_q
         self.cards_in_play = list()
         self.winner = Player
@@ -17,9 +17,8 @@ class Stich:
         """
         first_played_card = self.cards_in_play[0]
 
-        if isinstance(card_about_to_be_played, SpecialCard):
-            return True
-        elif isinstance(card_about_to_be_played, ColoredCard) and isinstance(first_played_card, ColoredCard):
+        if isinstance(first_played_card, ColoredCard):
+            card_about_to_be_played: ColoredCard
             if card_about_to_be_played.card_color == first_played_card.card_color:
                 return True
         else:
@@ -30,6 +29,8 @@ class Stich:
         If the player has no cards that allow him to serve the color on the board :return True.
         """
         for i in player.hand:
+            if isinstance(i, SpecialCard):
+                continue
             if self.farbzwang_check(i):
                 return False
         return True
@@ -43,7 +44,7 @@ class Stich:
         """
         if len(self.cards_in_play) == 0:
             return True
-        elif type(chosen_card) is type(SpecialCard):
+        elif type(chosen_card) is SpecialCard:
             return True
         elif self.cant_serve(player):
             return True
@@ -127,12 +128,12 @@ class Stich:
         for i in self.cards_in_play:
             i.print_card()
 
-    def play(self, player_queue: deque):
+    def play(self):
         """
         Execute the Stich.
         """
 
-        for i in player_queue:
+        for i in self.player_q:
             print('*************************************')
             print("It is now the turn of Player:", i.id)
             print("Cards Currently on the board: {", end="")

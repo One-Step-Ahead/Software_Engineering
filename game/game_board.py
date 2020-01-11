@@ -1,4 +1,5 @@
 from collections import deque
+from typing import List
 
 from game.cards import create_all_cards
 from game.player import Player
@@ -60,26 +61,35 @@ class GameBoard:
     def set_stich_queue(self, stich_count: int) -> deque:
         stich_queue = deque(self.player_queue)
         winner = self.get_current_round().stiche[stich_count - 2].winner
-        while winner != stich_queue[0]:
-            stich_queue.append(stich_queue.popleft())
+        while winner is not stich_queue[0]:
+            stich_queue.rotate(-1)
         return stich_queue
 
-    def get_winner(self) -> Player:
-        winner = Player
+    def get_winner(self) -> list:
+        winners = []
+        current_highscore = int()
         for i in self.players:
-            if winner is Player:
-                winner = i
             if isinstance(i, Player):
-                if i.score > winner.score:
-                    winner = i
-        return winner
+                if i.score > current_highscore:
+                    current_highscore = i.score
+        for i in self.players:
+            if isinstance(i, Player):
+                if i.score == current_highscore:
+                    winners.append(i)
+        return winners
 
     def complete_game(self):
-        winner = self.get_winner()
-        if winner.name is None:
-            print('Winner of the game is:', winner.id + 1)
+        winners = self.get_winner()
+        winners: List[Player]
+        if len(winners) == 1:
+            print("Congratulations" + winners[0].name + "you are victorious!")
         else:
-            print('Winner of the game is:', winner.name)
+            won = []
+            for i in winners:
+                won.append(i.name + " ")
+            while len(won) != 4:
+                won.append(" ")
+            print("Congratulations {}{}{}{}you managed to come out on top!".format(won[0], won[1], won[2], won[3]))
 
     def game_loop(self):
         for i in range(0, self.rounds_total):
@@ -92,7 +102,7 @@ class GameBoard:
                 else:
                     new_stich = Stich(self.set_stich_queue(k), self.get_current_round().atut)
                 self.get_current_round().stiche.append(new_stich)
-                new_stich.play(self.player_queue)
+                new_stich.play()
             self.get_current_round().calculate_score(self.players)
             self.cycle_player_q()
         self.complete_game()
