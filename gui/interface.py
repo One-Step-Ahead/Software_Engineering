@@ -125,7 +125,9 @@ class Ui_MainWindow(object):
         self.P2_Last_Played.setText("")
         self.P2_Last_Played.setObjectName("P2_Last_Played")
 
-        self.Textausgabe = QtWidgets.QLabel(self.centralwidget)
+        self.Textausgabe = QtWidgets.QTextEdit(self.centralwidget)
+        self.Textausgabe.setReadOnly(True)
+        self.Textausgabe.lineWrapMode()
         self.Textausgabe.setGeometry(QtCore.QRect(370, 770, 471, 71))
         self.Textausgabe.setObjectName("Textausgabe")
 
@@ -279,7 +281,10 @@ class Ui_MainWindow(object):
 
         self.Textausgabe.setText(_translate("MainWindow", "spieler x hat karte y gespielt"))
 
-        a, b, c, d = str(0)
+        a = str(0)
+        b = str(0)
+        c = str(0)
+        d = str(0)
         self.Scoreboard.setText(_translate("MainWindow", "Score: \n"
                                                             " Player 1: \n"
                                                             " {}\n"
@@ -292,9 +297,9 @@ class Ui_MainWindow(object):
 
         self.Aktuelle_Stiche.setText(_translate("MainWindow", "Player 1: __ Player2:__  Player3: __ Player4: __"))
 
-        self.Rundendisplay.setText(_translate("MainWindow", "Aktuelle Runde: \n"
+        self.Rundendisplay.setText(_translate("MainWindow", "Current Round: \n"
                                                             " \n"
-                                                            " Aktueller Stich:\n"
+                                                            " Current Stich:\n"
                                                             ""))
 
         self.yours_handcards.setText(_translate("MainWindow", "Your Handcards"))
