@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtWidgets, QtGui
 
+from gui import prediction_popup
+
 
 class Ui_MainWindow(object):
     """
@@ -32,6 +34,10 @@ class Ui_MainWindow(object):
 
     def clicked_aktuelle_stiche(self):
         print("aktuelle stiche")
+        import sys
+        self.pred_popup = prediction_popup.Ui_Prediction()
+        self.pred_popup = QtWidgets.QApplication(sys.argv)
+        self.pred_popup.setupUi()
 
     def update_scoreboard(self, p1=0, p2=0, p3=90, p4=0):
         a = str(p1)
@@ -242,14 +248,14 @@ class Ui_MainWindow(object):
         c = str(0)
         d = str(0)
         self.Scoreboard.setText(_translate("MainWindow", "Score: \n"
-                                                            " Player 1: \n"
-                                                            " {}\n"
-                                                            " Player 2: \n"
-                                                            " {}\n"
-                                                            " Player 3: \n"
-                                                            " {}\n"
-                                                            " Player 4: \n"
-                                                            " {}\n".format(a, b, c, d)))
+                                                         " Player 1: \n"
+                                                         " {}\n"
+                                                         " Player 2: \n"
+                                                         " {}\n"
+                                                         " Player 3: \n"
+                                                         " {}\n"
+                                                         " Player 4: \n"
+                                                         " {}\n".format(a, b, c, d)))
 
         self.Aktuelle_Stiche.setText(_translate("MainWindow", "Player 1: __ Player2:__  Player3: __ Player4: __"))
 
