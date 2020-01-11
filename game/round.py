@@ -47,7 +47,7 @@ class Round:
 
     def set_atut_manually(self, player_q):
         from game.game_board import GameBoard
-        print('Player', player_q[-1], 'chooses atut now!')
+        print('Player', player_q[-1].number, 'chooses atut now!')
         if GameBoard.display_mode:
             chosen_card = ask_for_card([ColoredCard(0, 'red'),
                                         ColoredCard(0, 'green'),
