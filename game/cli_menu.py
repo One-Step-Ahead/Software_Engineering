@@ -9,10 +9,6 @@ class Options:
     player_names_random = True
 
 
-def ask_what_to_do():
-    print("*** MainMenu ***")
-
-
 def welcome_message():
     print("***** Welcome to LeWi! *****\n")
     print('If you are new to the game checkout the "readme".')
@@ -31,6 +27,7 @@ def display_help():
 
 def display_developer_help():
     print('"pn"     toggle player names on/off')
+    print('"o"      displays all set options')
 
 
 def change_player_count():
@@ -53,26 +50,18 @@ def change_player_count():
 
 
 def change_player_names_random():
-    while True:
-        print("Player names support is set to [{}]".format(Options.player_names_random))
-        command = input().casefold()
-        if command == "true":
-            Options.player_names_random = True
-            print("Set to TRUE!")
-            break
-        elif command == "false":
-            Options.player_names_random = False
-            print("Set to FALSE!")
-            break
-        else:
-            continue
+    if Options.player_names_random:
+        Options.player_names_random = False
+    else:
+        Options.player_names_random = True
+    print("Choose random player names is now set to [{}]".format(Options.player_names_random))
 
 
 def user_input():
     command = input().casefold()
     if command == "h" or command == "help":
         display_help()
-    elif command == "exit":
+    elif command == "exit" or command == "x":
         exit()
     elif command == "p" or command == "player":
         change_player_count()
@@ -90,6 +79,15 @@ def user_input():
               'If you need help just type "h" and then press enter')
 
 
+def display_all_options():
+    print('** Display_Options **')
+    print('player_count = [{}]'.format(Options.player_count))
+    print('cli_inputs = [{}]'.format(Options.cli_inputs))
+    print('use_gui = [{}]'.format(Options.use_gui))
+    print('player_names_random = [{}]'.format(Options.player_names_random))
+    print()
+
+
 def dev_options_menu():
     while True:
         print('* Dev Menu *')
@@ -97,9 +95,9 @@ def dev_options_menu():
         print('Options: \n'
               '"prn"    toggle player random names\n'
               '"i"      starts interface\n'
-              '"x"      get back to the main menu')
+              '"o"      displays state of all options\n'
+              '"x"      get back to the main menu\n')
         command = input().casefold()
-
         if command == "prn":
             change_player_names_random()
         elif command == "i":
@@ -107,6 +105,8 @@ def dev_options_menu():
             run_interface()
         elif command == "x" or command == "exit":
             break
+        elif command == "o":
+            display_all_options()
         else:
             continue
 
@@ -114,8 +114,5 @@ def dev_options_menu():
 def run_menu():
     """Runs the menu"""
     while True:
-        ask_what_to_do()
+        print("\n*** MainMenu ***")
         user_input()
-
-
-run_menu()

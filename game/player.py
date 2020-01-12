@@ -13,7 +13,8 @@ class Player:
              'Katharina',
              'Sandra',
              'Verena',
-             'Sabrina']
+             'Sabrina',
+             'Jona']
 
     def __init__(self, player_number: int, name=None):
         self.number = player_number + 1
