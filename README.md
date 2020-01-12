@@ -7,8 +7,9 @@ to human opponents.
 # Download
 Note that we currently only support Windows!
 
-Newest release [Download here!](https://mega.nz/#!BOxShawC!q4xrEJF2lWVVrgR-LScQ-HJ6SXt_SKfgSW_h2p0EeA8)
+Newest release v0.3.1 [Download here!](https://mega.nz/#!pagETK7Z!5rX1p-uORL3te_MdQyGxS94RwfPP_HmylGgYPWzNAko)
 
+release v0.3 [Download here!](https://mega.nz/#!BOxShawC!q4xrEJF2lWVVrgR-LScQ-HJ6SXt_SKfgSW_h2p0EeA8)
 release v0.2 [Download here!](https://mega.nz/#!0SgjBISQ!ZuFUesRufZHjW1fDlBoqfrtkgvIAIDTIHLkeu4QNi6s)
 
 # How to Play
