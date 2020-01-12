@@ -7,10 +7,9 @@ to human opponents.
 # Download
 Note that we currently only support Windows!
 
-Newest release v0.3.1 [Download here!](https://mega.nz/#!pagETK7Z!5rX1p-uORL3te_MdQyGxS94RwfPP_HmylGgYPWzNAko)
+Newest release v0.3.2 [Download here!](https://mega.nz/#!MHIBGSaI!C9_VPklvqxs8ffFHEZoaBrn9Df-oAHzToYRv2iskqwQ)
 
-release v0.3 [Download here!](https://mega.nz/#!BOxShawC!q4xrEJF2lWVVrgR-LScQ-HJ6SXt_SKfgSW_h2p0EeA8)
-release v0.2 [Download here!](https://mega.nz/#!0SgjBISQ!ZuFUesRufZHjW1fDlBoqfrtkgvIAIDTIHLkeu4QNi6s)
+old releases [Check here!](https://mega.nz/#F!YWpSTCAK!uZkUggHo8zuiiqHlUfWVLA)
 
 # How to Play
 The game can be played by 3, 4, 5 or 6 players.  
