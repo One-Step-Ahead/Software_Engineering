@@ -37,7 +37,7 @@ class Player:
 
     def set_name(self, name='player'):
         if name == 'player':
-            print('Enter Player name for Player', self.number + 1, ':')
+            print('Enter Player name for Player', self.number, ':')
             name = input()
         self.name = name
 

@@ -1,12 +1,12 @@
 from gui.interface import run_interface
+from game.game_board import GameBoard
 
 
 class Options:
     player_count = 6
     cli_inputs = True
     use_gui = False
-    player_names = False
-    player_names_random = False
+    player_names_random = True
 
 
 def ask_what_to_do():
@@ -52,17 +52,17 @@ def change_player_count():
             continue
 
 
-def change_player_names():
+def change_player_names_random():
     while True:
-        print("Player names support is set to [{}]".format(Options.player_names))
+        print("Player names support is set to [{}]".format(Options.player_names_random))
         command = input().casefold()
         if command == "true":
-            Options.player_names = True
-            print("Set!")
+            Options.player_names_random = True
+            print("Set to TRUE!")
             break
         elif command == "false":
-            Options.player_names = False
-            print("Set!")
+            Options.player_names_random = False
+            print("Set to FALSE!")
             break
         else:
             continue
@@ -78,6 +78,13 @@ def user_input():
         change_player_count()
     elif command == "":
         welcome_message()
+    elif command == "d":
+        dev_options_menu()
+    elif command == "n" or command == "new game" or command == "newgame":
+        g = GameBoard(Options.player_count,
+                      Options.cli_inputs,
+                      Options.player_names_random)
+        g.start()
     else:
         print('I did not get you there. \n'
               'If you need help just type "h" and then press enter')
@@ -88,18 +95,20 @@ def dev_options_menu():
         print('* Dev Menu *')
         print('Note that these options are experimental and might not work properly!')
         print('Options: \n'
-              '"pn"     toggle player names support\n'
               '"prn"    toggle player random names\n'
-              '"i"      starts interface')
+              '"i"      starts interface\n'
+              '"x"      get back to the main menu')
         command = input().casefold()
-        if command == "":
-            continue
-        elif command == "pn":
-            change_player_names()
-        elif command == "prn":
-            print("Error! This is not working!")
+
+        if command == "prn":
+            change_player_names_random()
         elif command == "i":
+            print("Running Interface...")
             run_interface()
+        elif command == "x" or command == "exit":
+            break
+        else:
+            continue
 
 
 def run_menu():

@@ -11,8 +11,9 @@ from game.stich import Stich
 class GameBoard:
     display_mode = None
     players = None
+    random_names = None
 
-    def __init__(self, player_total: int, _display_mode: bool):
+    def __init__(self, player_total: int, _display_mode: bool, random_names: bool):
         """
         :param player_total: total ammount of players that are going to play the game
         :param display_mode: True: CLI inputs are on; False: CLI inputs are turned off
@@ -24,6 +25,7 @@ class GameBoard:
         self.current_round_count = 0
         self.player_queue = deque(self.players)
         GameBoard.display_mode = _display_mode
+        GameBoard.random_names = random_names
 
     def get_current_round(self) -> Round:
         return self.score_board.round_score[self.current_round_count - 1]
@@ -112,7 +114,7 @@ class GameBoard:
     def get_player_names(self):
         for i in self.players:
             if isinstance(i, Player):
-                if GameBoard.display_mode:
+                if GameBoard.random_names:
                     i.set_name()
                 else:
                     i.set_random_name()
