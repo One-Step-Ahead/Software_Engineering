@@ -4,6 +4,11 @@ To help this process we are going to add in a AI client in the future that will 
 game by playing the game versus instances of itself. That way it will pose a serious challange
 to human opponents.
 
+# Download
+Note that we currently only support Windows!
+
+Current release v0.2 [Download here!](https://mega.nz/#!0SgjBISQ!ZuFUesRufZHjW1fDlBoqfrtkgvIAIDTIHLkeu4QNi6s)
+
 # How to Play
 The game can be played by 3, 4, 5 or 6 players.  
 It consists of 60 Cards.  
