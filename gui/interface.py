@@ -429,7 +429,7 @@ class Ui_MainWindow(object):
         self.menuSetup.setTitle(_translate("MainWindow", "Setup"))
 
 
-if __name__ == "__main__":
+def run_interface():
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
