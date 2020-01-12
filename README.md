@@ -51,6 +51,30 @@ The second one, a functional AI client needs a lot more work. We have informed o
 
 To play the game, you do not need to change any of the default settings.
 
+# MoSCoW
+After a few alterations to our goals the implemented requirements are as follows:
+* The game has to be playable for 4 players
+* The rules of Atut apply
+* Your own playing cards (your hand) is visible on the CLI
+* The score gets calculated after every trick (Stich)
+* After the cards are dealt, predictions about the number of won tricks (Stiche) are made
+* The Game consists of 4 decks of red, green, blue and yellow, with 13 cards each and 8 special cards
+* Each color of cards has values from 1 to 13
+* The 8 special cards are 4 jesters and 4 wizards
+* Jesters never win (except if there are 4 in the same trick) and can be played at any time
+* The game ends if there are no cards left to determine the Atut (then the last round is played)
+* Follow suite rule applies (Farbzwang)
+* After every round, one more card is dealt at the start of the next round.
+* The player to start the round cycles trough the participants of the game(first round player 1, second round player 2 ,...)
+* At the start of every round the Atut is determined from the remaining cards that were not dealt. If the card is a 
+jester, there is no atut for that round, if the card is a wizard the player that would start the round decides which color it will be
+* In the last round there is never a atut
+* After the last round concludes, the player with the highest score wins the game. If there are equal scores, all players
+with the same score share the victory.
+* It is visible which cards were played by the players previous in the same stich.
+* At the end of every round no player may be left with cards on their hand
+* At the start of the game, every player can choose a name. If no name is choosen, a random name will be assigned.
+
 ## Player Options
 If you want to configure something you need tho change the values in the **engine.py**.
 * player_count = number of players that will be playing the game
